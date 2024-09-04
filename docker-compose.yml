@@ -7,6 +7,7 @@ services:
       - "3000:3000"
     depends_on:
       - backend
+
   backend:
     build:
       context: ./backend
@@ -15,15 +16,23 @@ services:
     environment:
       - DATABASE_URL=postgres://user:password@db:5432/mydatabase
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+
   db:
     image: postgres:14
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: your_password
       POSTGRES_DB: mydatabase
     ports:
       - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   nginx:
     image: nginx:latest
     ports:

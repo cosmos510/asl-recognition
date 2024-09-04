@@ -14,7 +14,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgres://user:password@db:5432/mydatabase
+      - DATABASE_URL=postgres://postgres:your_password@db:5432/mydatabase
     depends_on:
       db:
         condition: service_healthy

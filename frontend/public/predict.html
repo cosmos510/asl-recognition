@@ -9,21 +9,67 @@
 <body>
     <h1>ASL Real-Time Recognition</h1>
     <div>
-        <img id="video" src="http://backend:8000/video_feed/" width="640" height="480" alt="Video feed">
+        <!-- Video stream -->
+        <video id="webcam" width="640" height="480" autoplay></video>
+        <!-- Prediction result -->
         <h2>Prediction: <span id="prediction">Loading...</span></h2>
     </div>
 
     <script>
-        function updatePrediction() {
-            fetch("http://backend:8000/get_prediction/")
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('prediction').innerText = data.prediction || 'No prediction';
-                })
-                .catch(error => console.error('Error:', error));
+        async function setupWebcam() {
+            const webcamElement = document.getElementById('webcam');
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                webcamElement.srcObject = stream;
+            } catch (err) {
+                console.error('Error accessing webcam: ', err);
+            }
         }
-
-        setInterval(updatePrediction, 1000);  // Update prediction every second
+    
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    
+        function sendFrameToServer(frame) {
+            fetch("{% url 'upload_frame' %}", {
+                method: 'POST',
+                body: frame,
+                headers: {
+                    'Content-Type': 'application/octet-stream',
+                    'X-CSRFToken': getCookie('csrftoken')
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('prediction').innerText = data.prediction || 'No prediction';
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    
+        function captureFrame() {
+            const videoElement = document.getElementById('webcam');
+            const canvas = document.createElement('canvas');
+            canvas.width = videoElement.videoWidth;
+            canvas.height = videoElement.videoHeight;
+            canvas.getContext('2d').drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+            canvas.toBlob(blob => sendFrameToServer(blob), 'image/jpeg');
+        }
+    
+        setupWebcam();
+    
+        // Periodically capture and send frames to the server
+        setInterval(captureFrame, 1000);  // Adjust the interval as needed
     </script>
 </body>
 </html>

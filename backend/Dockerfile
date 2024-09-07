@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 # Install dependencies
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
-RUN apt-get update && apt-get install -y libgl1-mesa-glx
+RUN apt-get update && apt-get install -y libgl1-mesa-glx && pip install opencv-python && apt-get upgrade -y
 # Copy the project files
 COPY . .
 

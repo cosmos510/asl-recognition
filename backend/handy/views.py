@@ -1,24 +1,4 @@
-# views.py
 
-from django.http import StreamingHttpResponse, JsonResponse
-from django.shortcuts import render
-import cv2
-import mediapipe as mp
-import pickle
-import numpy as np
-from django.views.decorators.csrf import csrf_exempt
-
-
-# Load the trained model
-model_dict = pickle.load(open('/usr/src/app/model1.p', 'rb'))
-model = model_dict['model']
-
-# Initialize MediaPipe Hands module
-
-mp_hands = mp.solutions.hands
-hands = mp_hands.Hands()
-
-global_predicted_character = "No prediction"  # Initialize global variable
 
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -26,6 +6,13 @@ import cv2
 import mediapipe as mp
 import pickle
 import numpy as np
+from django.http import StreamingHttpResponse, JsonResponse
+from django.shortcuts import render
+import cv2
+import mediapipe as mp
+import pickle
+import numpy as np
+from django.views.decorators.csrf import csrf_exempt
 
 # Load the trained model
 model_dict = pickle.load(open('/usr/src/app/model1.p', 'rb'))
@@ -46,8 +33,15 @@ def upload_frame(request):
     global global_predicted_character
 
     if request.method == 'POST':
+        if 'file' not in request.FILES:
+            return JsonResponse({'status': 'failed', 'error': 'No file part in the request'}, status=400)
+
+        file = request.FILES['file']
+        if file.size == 0:
+            return JsonResponse({'status': 'failed', 'error': 'Empty file uploaded'}, status=400)
+
         # Read the uploaded image
-        image = request.body
+        image = file.read()
 
         # Convert the image to a numpy array
         np_arr = np.frombuffer(image, np.uint8)
@@ -87,7 +81,7 @@ def upload_frame(request):
 
         return JsonResponse({'prediction': global_predicted_character})
 
-    return JsonResponse({'status': 'failed'}, status=400)
+    return JsonResponse({'status': 'failed', 'error': 'Invalid request method'}, status=400)
 
 def video_feed(request):
     def generate():

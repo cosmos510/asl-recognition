@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time ASL Recognition</title>
+</head>
+<body>
+    <h1>ASL Real-Time Recognition</h1>
+    <div>
+        <img id="video" src="http://backend:8000/video_feed/" width="640" height="480" alt="Video feed">
+        <h2>Prediction: <span id="prediction">Loading...</span></h2>
+    </div>
+
+    <script>
+        function updatePrediction() {
+            fetch("http://backend:8000/get_prediction/")
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('prediction').innerText = data.prediction || 'No prediction';
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        setInterval(updatePrediction, 1000);  // Update prediction every second
+    </script>
+</body>
+</html>

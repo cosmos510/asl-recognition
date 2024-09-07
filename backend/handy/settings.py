@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -49,14 +50,18 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
-
+CORS_ALLOWED_ORIGINS = [
+    " http://frontend:3000",  # Replace with the actual URL where your frontend is hosted
+]
+CORS_ALLOW_ALL_ORIGINS = True
 ROOT_URLCONF = 'handy.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'frontend', 'public')],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend/public')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -15,6 +15,10 @@ services:
       - "8000:8000"
     environment:
       - DATABASE_URL=postgres://postgres:your_password@db:5432/mydatabase
+    volumes:
+      - ./backend:/usr/src/app
+      - ./frontend/public:/usr/src/app/frontend/public
+    
     depends_on:
       db:
         condition: service_healthy

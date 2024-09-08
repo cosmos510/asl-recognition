@@ -18,7 +18,6 @@ services:
     volumes:
       - ./backend:/usr/src/app
       - ./frontend/public:/usr/src/app/frontend/public
-      - ./frontend/static:/usr/src/app/frontend/static
     
     depends_on:
       db:

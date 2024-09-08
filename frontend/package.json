@@ -2,7 +2,7 @@
   "name": "handy-frontend",
   "version": "1.0.0",
   "description": "Frontend for the Handy app",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

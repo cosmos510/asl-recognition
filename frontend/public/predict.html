@@ -5,8 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real-Time ASL Recognition</title>
+    
 </head>
 <body>
+    <!-- Include the header here -->
+    <div id="header"></div>
+
     <h1>ASL Real-Time Recognition</h1>
     <div>
         <!-- Video stream -->
@@ -16,62 +20,67 @@
     </div>
 
     <script>
-        async function setupWebcam() {
-    const webcamElement = document.getElementById('webcam');
-    try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-        webcamElement.srcObject = stream;
-    } catch (err) {
-        console.error('Error accessing webcam: ', err);
-    }
-}
+        // Load the header.html content and insert it into the div with id="header"
+        fetch('/header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
 
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
+        async function setupWebcam() {
+            const webcamElement = document.getElementById('webcam');
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                webcamElement.srcObject = stream;
+            } catch (err) {
+                console.error('Error accessing webcam: ', err);
             }
         }
-    }
-    return cookieValue;
-}
 
-function sendFrameToServer(blob) {
-    const formData = new FormData();
-    formData.append('file', blob, 'frame.jpg');
-
-    fetch("/upload_frame/", {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'X-CSRFToken': getCookie('csrftoken')
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
         }
-    })
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById('prediction').innerText = data.prediction || 'No prediction';
-    })
-    .catch(error => console.error('Error:', error));
-}
 
-function captureFrame() {
-    const videoElement = document.getElementById('webcam');
-    const canvas = document.createElement('canvas');
-    canvas.width = videoElement.videoWidth;
-    canvas.height = videoElement.videoHeight;
-    canvas.getContext('2d').drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-    canvas.toBlob(blob => sendFrameToServer(blob), 'image/jpeg');
-}
+        function sendFrameToServer(blob) {
+            const formData = new FormData();
+            formData.append('file', blob, 'frame.jpg');
 
-setupWebcam();
+            fetch("/upload_frame/", {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken')
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('prediction').innerText = data.prediction || 'No prediction';
+            })
+            .catch(error => console.error('Error:', error));
+        }
 
-// Periodically capture and send frames to the server
-setInterval(captureFrame, 1000);  // Adjust the interval as needed  // Adjust the interval as needed
+        function captureFrame() {
+            const videoElement = document.getElementById('webcam');
+            const canvas = document.createElement('canvas');
+            canvas.width = videoElement.videoWidth;
+            canvas.height = videoElement.videoHeight;
+            canvas.getContext('2d').drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+            canvas.toBlob(blob => sendFrameToServer(blob), 'image/jpeg');
+        }
+
+        setupWebcam();
+
+        // Periodically capture and send frames to the server
+        setInterval(captureFrame, 1000);  // Adjust the interval as needed
     </script>
 </body>
 </html>

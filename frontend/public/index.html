@@ -5,19 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Real-Time ASL Recognition</title>
-    
-    <link rel="stylesheet" href="{% 'src/index.css' %}">
 </head>
 <body>
-    <header>
-        <h1>Real-Time ASL Recognition</h1>
-    </header>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="/predict">Predict</a>
-        <a href="#">Contact</a>
-    </nav>
-   
+    <div id="header"></div>
+
+    <script>
+        // Load the header.html content and insert it into the div with id="header"
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+    </script>
+
+    <!-- Your page content goes here -->
 </body>
 </html>

@@ -5,13 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real-Time ASL Recognition</title>
+    <script defer="" src="/static/js/bundle.js"></script>
+    
     
 </head>
 <body>
     <!-- Include the header here -->
-    <div id="header"></div>
+    
 
-    <h1>ASL Real-Time Recognition</h1>
+    <header>
+        <h1>Real-Time ASL Recognition</h1>
+    </header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="/predict">Predict</a>
+        <a href="#">Contact</a>
+    </nav>
     <div>
         <!-- Video stream -->
         <video id="webcam" width="640" height="480" autoplay></video>
@@ -21,9 +31,7 @@
 
     <script>
         // Load the header.html content and insert it into the div with id="header"
-        fetch('/header.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('header').innerHTML = data);
+        
 
         async function setupWebcam() {
             const webcamElement = document.getElementById('webcam');
@@ -51,36 +59,55 @@
         }
 
         function sendFrameToServer(blob) {
-            const formData = new FormData();
-            formData.append('file', blob, 'frame.jpg');
+    if (!(blob instanceof Blob)) {
+        console.error('Expected a Blob, but got:', blob);
+        return;
+    }
 
-            fetch("/upload_frame/", {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'X-CSRFToken': getCookie('csrftoken')
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('prediction').innerText = data.prediction || 'No prediction';
-            })
-            .catch(error => console.error('Error:', error));
+    const formData = new FormData();
+    formData.append('file', blob, 'frame.jpg');
+
+    fetch("/upload_frame/", {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-CSRFToken': getCookie('csrftoken')
         }
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('prediction').innerText = data.prediction || 'No prediction';
+    })
+    .catch(error => console.error('Error:', error));
+}
 
-        function captureFrame() {
-            const videoElement = document.getElementById('webcam');
-            const canvas = document.createElement('canvas');
-            canvas.width = videoElement.videoWidth;
-            canvas.height = videoElement.videoHeight;
-            canvas.getContext('2d').drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-            canvas.toBlob(blob => sendFrameToServer(blob), 'image/jpeg');
-        }
+function captureFrame() {
+    const videoElement = document.getElementById('webcam');
+    const canvas = document.createElement('canvas');
+    canvas.width = videoElement.videoWidth;
+    canvas.height = videoElement.videoHeight;
+    
+    const context = canvas.getContext('2d');
+    context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+    
+    // Ensure canvas.toBlob is supported
+    if (canvas.toBlob) {
+        canvas.toBlob(blob => {
+            if (blob) {
+                sendFrameToServer(blob);
+            } else {
+                
+            }
+        }, 'image/jpeg');
+    } else {
+        console.error('Canvas API does not support toBlob.');
+    }
+}
 
-        setupWebcam();
+setupWebcam();
 
-        // Periodically capture and send frames to the server
-        setInterval(captureFrame, 1000);  // Adjust the interval as needed
+// Periodically capture and send frames to the server
+setInterval(captureFrame, 1000);  // Adjust the interval as needed
     </script>
 </body>
 </html>

@@ -102,3 +102,6 @@ def video_feed(request):
 
 def predict(request):
     return render(request, 'predict.html')
+
+def about(request):
+    return render(request, 'about.html')

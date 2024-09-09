@@ -1,6 +1,8 @@
 from django.http import JsonResponse, StreamingHttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate, logout
+
 import cv2
 import mediapipe as mp
 import pickle
@@ -97,3 +99,20 @@ def predict(request):
 
 def about(request):
     return render(request, 'about.html')
+
+from django.contrib.auth.models import User
+from django.contrib import messages
+from .forms import RegisterForm
+
+def register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your account has been created!')
+            return render(request, 'index.html')
+    else:
+        form = RegisterForm()
+    return render(request, 'register.html', {'form': form})
+
+

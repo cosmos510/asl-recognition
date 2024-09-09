@@ -1,18 +1,10 @@
-
-
-from django.http import JsonResponse
+from django.http import JsonResponse, StreamingHttpResponse
 from django.views.decorators.csrf import csrf_exempt
-import cv2
-import mediapipe as mp
-import pickle
-import numpy as np
-from django.http import StreamingHttpResponse, JsonResponse
 from django.shortcuts import render
 import cv2
 import mediapipe as mp
 import pickle
 import numpy as np
-from django.views.decorators.csrf import csrf_exempt
 
 # Load the trained model
 model_dict = pickle.load(open('/usr/src/app/model1.p', 'rb'))
@@ -85,7 +77,7 @@ def upload_frame(request):
 
 def video_feed(request):
     def generate():
-        cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)  # Ensure this points to the correct video device
+        cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
         while True:
             ret, frame = cap.read()

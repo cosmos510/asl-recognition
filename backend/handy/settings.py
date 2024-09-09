@@ -43,7 +43,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 CORS_ALLOWED_ORIGINS = [
-    " http://frontend:3000",  # Replace with the actual URL where your frontend is hosted
+    " http://frontend:3000",
 ]
 CORS_ALLOW_ALL_ORIGINS = True
 ROOT_URLCONF = 'handy.urls'
@@ -119,14 +119,14 @@ USE_TZ = True
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # URL to use when referring to static files (e.g., in templates)
-STATIC_URL = '/static/'
+STATIC_URL = '/public/'
 
 # Absolute path to the directory where collectstatic will collect static files for deployment
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Additional directories to check for static files
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, ''),
 ]
 
 # Default primary key field type

@@ -113,14 +113,24 @@ def predict(request):
 def about(request):
     return render(request, 'about.html')
 
+def home(request):
+    return render(request, 'index.html')
+
 
 def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Your account has been created!')
-            return render(request, 'index.html')
+            user = form.save()  # Save the new user
+            login(request, user)  # Log the user in
+            messages.success(request, 'Your account has been created and you are now logged in!')
+            return JsonResponse({'success': True, 'message': 'Registration successful!'})
+        else:
+            # Include form errors in the JSON response
+            return JsonResponse({'success': False, 'errors': form.errors.as_json()})
     else:
         form = RegisterForm()
     return render(request, 'register.html', {'form': form})
+
+def check_auth(request):
+    return JsonResponse({'is_authenticated': request.user.is_authenticated})

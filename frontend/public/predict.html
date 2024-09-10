@@ -5,24 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real-Time ASL Recognition</title>
-    <script defer="" src="/static/js/bundle.js"></script>  
+    <link rel="stylesheet" href="/static/css/style.css"> <!-- Link to the external CSS file -->
+    <script defer src="/static/js/bundle.js"></script>  
 </head>
 <body>
     <header>
-        <h1>Real-Time ASL Recognition</h1>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/about">About</a>
-            <a href="/predict">Predict</a>
-            <a href="#">Contact</a>
-        </nav>
+        <div class="container">
+            <h1>Real-Time ASL Recognition</h1>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/predict">Predict</a>
+                <a href="#">Contact</a>
+            </nav>
+        </div>
     </header>
-    <div>
-        <!-- Video stream -->
-        <video id="webcam" width="640" height="480" autoplay></video>
-        <!-- Prediction result -->
-        <h2>Prediction: <span id="prediction">Loading...</span></h2>
-    </div>
+    <main>
+        <div class="container">
+            <!-- Video stream -->
+            <div class="video-container">
+                <video id="webcam" width="640" height="480" autoplay></video>
+            </div>
+            <!-- Prediction result -->
+            <div class="prediction">
+                <h2>Prediction: <span id="prediction">Loading...</span></h2>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Real-Time ASL Recognition. All rights reserved.</p>
+        </div>
+    </footer>
     <script src="/main.js"></script>  
 </body>
 </html>

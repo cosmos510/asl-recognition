@@ -5,26 +5,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Real-Time ASL Recognition</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script defer src="/static/js/bundle.js"></script>  
 </head>
 <body>
     <header>
         <div class="container">
             <h1>Real-Time ASL Recognition</h1>
             <nav>
-                <ul id="navLinks">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/predict">Predict</a></li>
-                    <li><a href="#">Contact</a></li>
+            
+                    <a href="/">Home</a>
+                    <a href="/about">About</a>
+                    <a href="/predict">Predict</a>
+                    <a href="#">Contact</a>
                     <!-- Placeholder for dynamic auth links -->
-                </ul>
+              
             </nav>
         </div>
     </header>
     <main>
         <div class="container">
-            <h2>Welcome to Real-Time ASL Recognition</h2>
-            <p>Our platform provides cutting-edge technology to recognize American Sign Language in real-time.</p>
+            <section class="hero">
+                <h2>Welcome to Real-Time ASL Recognition</h2>
+                <p>Our platform provides cutting-edge technology to recognize American Sign Language in real-time. Our advanced algorithms and real-time processing capabilities make communication more accessible and inclusive.</p>
+                <a href="/predict" class="btn btn-primary">Get Started</a>
+            </section>
+
+            <section class="features">
+                <h2>Features</h2>
+                <div class="feature">
+                    <h3>Real-Time Recognition</h3>
+                    <p>Instantly translate American Sign Language into text and speech. Perfect for accessibility and communication in various environments.</p>
+                </div>
+                <div class="feature">
+                    <h3>High Accuracy</h3>
+                    <p>Our system uses the latest machine learning techniques to ensure high accuracy in sign language recognition.</p>
+                </div>
+                <div class="feature">
+                    <h3>User-Friendly Interface</h3>
+                    <p>Designed with simplicity in mind, our platform is easy to use and navigate, making it accessible for everyone.</p>
+                </div>
+            </section>
+
+            <section class="cta">
+                <h2>Join Us Today!</h2>
+                <p>Be a part of the future of communication technology. Sign up now to start using our real-time ASL recognition system.</p>
+                <a href="/signup" class="btn btn-secondary">Sign Up</a>
+            </section>
         </div>
     </main>
     <footer>
@@ -32,7 +59,6 @@
             <p>&copy; 2024 Real-Time ASL Recognition. All rights reserved.</p>
         </div>
     </footer>
-
-    <script src="main3.js"></script> <!-- Link to your external JS file -->
+    <script src="/static/js/main3.js"></script> <!-- Link to your external JS file -->
 </body>
 </html>

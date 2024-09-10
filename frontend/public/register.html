@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real-Time ASL Recognition</title>
-    <link rel="stylesheet" href="/static/css/style.css"> <!-- Assuming your CSS file will be named style.css -->
+    <link rel="stylesheet" href="/static/css/style.css"> <!-- Link to your CSS file -->
     <script defer src="/static/js/bundle.js"></script>
 </head>
 <body>
@@ -13,12 +13,13 @@
         <div class="container">
             <h1>Real-Time ASL Recognition</h1>
             <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/predict">Predict</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
+        
+                    <a href="/">Home</a>
+                    <a href="/about">About</a>
+                    <a href="/predict">Predict</a>
+                    <a href="/contact">Contact</a>
+                    <!-- Placeholder for dynamic auth links -->
+    
             </nav>
         </div>
     </header>
@@ -28,7 +29,7 @@
             <form id="myForm" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit" id="submitButton" class="btn">Register</button>
+                <button type="submit" id="submitButton" class="btn btn-primary">Register</button>
             </form>
         </div>
     </main>
@@ -37,6 +38,6 @@
             <p>&copy; 2024 Real-Time ASL Recognition. All rights reserved.</p>
         </div>
     </footer>
-    <script src="/main2.js"></script>
+    <script src="/main2.js"></script> <!-- Link to your external JS file -->
 </body>
 </html>

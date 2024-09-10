@@ -121,7 +121,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # URL to use when referring to static files (e.g., in templates)
 STATIC_URL = '/public/'
 
-# Absolute path to the directory where collectstatic will collect static files for deployment
+# Absolute path to the directory where collectstatic will collect static
+# files for deployment
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Additional directories to check for static files

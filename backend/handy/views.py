@@ -1,3 +1,6 @@
+from django.contrib.auth.models import User
+from .forms import RegisterForm
+from django.contrib import messages
 from django.http import JsonResponse, StreamingHttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect
@@ -18,9 +21,11 @@ hands = mp_hands.Hands()
 
 global_predicted_character = "No prediction"  # Initialize global variable
 
+
 def get_prediction(request):
     global global_predicted_character
     return JsonResponse({'prediction': global_predicted_character})
+
 
 @csrf_exempt
 def upload_frame(request):
@@ -28,11 +33,13 @@ def upload_frame(request):
 
     if request.method == 'POST':
         if 'file' not in request.FILES:
-            return JsonResponse({'status': 'failed', 'error': 'No file part in the request'}, status=400)
+            return JsonResponse(
+                {'status': 'failed', 'error': 'No file part in the request'}, status=400)
 
         file = request.FILES['file']
         if file.size == 0:
-            return JsonResponse({'status': 'failed', 'error': 'Empty file uploaded'}, status=400)
+            return JsonResponse(
+                {'status': 'failed', 'error': 'Empty file uploaded'}, status=400)
 
         # Read the uploaded image
         image = file.read()
@@ -75,7 +82,9 @@ def upload_frame(request):
 
         return JsonResponse({'prediction': global_predicted_character})
 
-    return JsonResponse({'status': 'failed', 'error': 'Invalid request method'}, status=400)
+    return JsonResponse(
+        {'status': 'failed', 'error': 'Invalid request method'}, status=400)
+
 
 def video_feed(request):
     def generate():
@@ -92,17 +101,18 @@ def video_feed(request):
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
-    return StreamingHttpResponse(generate(), content_type='multipart/x-mixed-replace; boundary=frame')
+    return StreamingHttpResponse(
+        generate(),
+        content_type='multipart/x-mixed-replace; boundary=frame')
+
 
 def predict(request):
     return render(request, 'predict.html')
 
+
 def about(request):
     return render(request, 'about.html')
 
-from django.contrib.auth.models import User
-from django.contrib import messages
-from .forms import RegisterForm
 
 def register(request):
     if request.method == 'POST':
@@ -114,5 +124,3 @@ def register(request):
     else:
         form = RegisterForm()
     return render(request, 'register.html', {'form': form})
-
-

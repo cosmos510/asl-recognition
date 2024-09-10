@@ -33,9 +33,7 @@ class Prediction(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Prediction {
-            self.prediction_id} for Frame {
-            self.frame.frame_id}"
+        return f"Prediction {self.prediction_id} for Frame {self.frame.frame_id}"
 
 
 class Feedback(models.Model):

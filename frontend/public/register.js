@@ -1,8 +1,5 @@
-// main.js
-
 document.addEventListener("DOMContentLoaded", function() {
     
-    // Load header
     fetch('/header.html')
         .then(response => response.text())
         .then(data => {
@@ -19,9 +16,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // Handle form submission
     const form = document.getElementById("myForm");
     
-    if (form) { // Check if the form exists on the page
+    if (form) { 
         form.addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent default form submission
+            event.preventDefault(); 
 
             const formData = new FormData(form);
 

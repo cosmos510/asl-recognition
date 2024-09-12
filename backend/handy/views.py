@@ -27,7 +27,7 @@ def get_prediction(request):
     return JsonResponse({'prediction': global_predicted_character})
 
 
-
+@csrf_exempt
 def upload_frame(request):
     global global_predicted_character
 

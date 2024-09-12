@@ -1,21 +1,21 @@
-  /* General styles */
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f0f4f8;
     color: #333;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensure the body takes up the full viewport height */
+    min-height: 100vh;
 }
 
 /* Header styles */
 header {
-    background-color: #333;
+    background-color: #1e1e2f;
     color: white;
     padding: 1rem;
+    box-shadow: 0 2px 5 rgba(0, 0, 0, 0.);
 }
 
 header .container {
@@ -28,34 +28,37 @@ header .container {
 
 header h1 {
     margin: 0;
+    font-size: 1.8rem;
 }
 
 header nav {
     display: flex;
+    justify-content: center;
     gap: 1rem;
+    margin-top: 0.5rem;
 }
 
 header nav a {
-    color: white;
+    color: #f0f8ff;
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 header nav a:hover {
-    background-color: #555;
+    background-color: #3e3e5c;
+    transform: scale(1.05);
 }
 
 /* Main content styles */
 main {
-    flex: 1; /* Allow main to grow and fill available space */
+    flex: 1;
     padding: 2rem;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
+    background-color: #ffffff; /* Clean white background */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 1rem 0;
 }
 
 /* Video container */
@@ -68,6 +71,11 @@ video {
     border: 2px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+video:hover {
+    transform:(1.05);
 }
 
 /* Prediction result */
@@ -77,35 +85,31 @@ video {
 
 .prediction h2 {
     font-size: 1.5rem;
-    color: #333;
+    color: #1e1e2f; 
 }
 
-/* Footer styles */
-footer {
-    background-color: #333;
-    color: white;
-    padding: 1rem;
-    text-align: center;
-    bottom: 0;
-    width: 100%;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-}
 
+/* Form styles */
 form {
-    max-width: 400px;
+   -width: 400px;
     margin: 3rem auto;
     padding: 2rem;
     border: none;
     border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    background-color:ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+form:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 form label {
     display: block;
     margin-bottom: 0.75rem;
     font-weight: 500;
-    color: #444;
+    color: #555;
 }
 
 form input {
@@ -116,12 +120,13 @@ form input {
     margin-bottom: 1rem;
     font-size: 1rem;
     background-color: #f7f7f7;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
+    transition: border-color 0.3s ease, background-color 03s ease;
 }
 
 form input:focus {
     border-color: #007bff;
-    background-color: #fff;
+    background-color: #ffffff;
+    outline: none;
 }
 
 form button {
@@ -134,9 +139,67 @@ form button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 form button:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto; 
+    padding: 2rem;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+}
+
+.feature {
+    flex: 1;
+    margin: 0 1rem;
+    background: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+ transition: transform 0.3s; 
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007BFF;
+}
+
+.btn-secondary {
+    background-color: #28a745;
+}
+
+
+footer {
+    background-color: #212529;
+    color: white;
+    padding: 0.5rem 0;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }

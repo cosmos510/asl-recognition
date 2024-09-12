@@ -18,13 +18,14 @@ header {
     box-shadow: 0 2px 5 rgba(0, 0, 0, 0.);
 }
 
-header .container {
+header .header-content {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 
 header h1 {
     margin: 0;
@@ -63,7 +64,6 @@ main {
 
 /* Video container */
 .video-container {
-    text-align: center;
     margin-bottom: 2rem;
 }
 
@@ -71,7 +71,11 @@ video {
     border: 2px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+}
+.container2 {
+    max-width: 800px;
+    margin: 2rem auto;
+    text-align: center;
 }
 
 video:hover {
@@ -80,12 +84,17 @@ video:hover {
 
 /* Prediction result */
 .prediction {
-    text-align: center;
+    background-color:#e9ecef;
+    color:  #1e1e2f;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin: 1rem auto;
+    width: fit-content; /*s width to content */
 }
 
 .prediction h2 {
-    font-size: 1.5rem;
-    color: #1e1e2f; 
+    margin: 0; /* Remove default margin */
 }
 
 
@@ -146,11 +155,6 @@ form button:hover {
     background-color: #0056b3;
     transform: scale(1.05);
 }
-.container {
-    max-width: 1200px;
-    margin: 0 auto; 
-    padding: 2rem;
-}
 
 .hero {
     text-align: center;
@@ -203,3 +207,9 @@ footer {
     width: 100%;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+

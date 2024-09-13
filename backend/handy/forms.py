@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User as DjangoUser
 from app.models import User as CustomUser
+from django.contrib.auth import authenticate
 
 class RegisterForm(forms.ModelForm):
     password1 = forms.CharField(widget=forms.PasswordInput())
@@ -33,3 +34,10 @@ class RegisterForm(forms.ModelForm):
             django_user.save()
 
         return custom_user
+    
+from django import forms
+from django.contrib.auth import get_user_model
+
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=150)
+    password = forms.CharField(widget=forms.PasswordInput())

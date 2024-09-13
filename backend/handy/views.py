@@ -1,10 +1,12 @@
-from django.contrib.auth.models import User
+from app.models import User
 from .forms import RegisterForm
 from django.contrib import messages
 from django.http import JsonResponse, StreamingHttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import login, authenticate 
+from .forms import LoginForm
+from django.contrib.auth import authenticate, login as auth_login
 
 import cv2
 import mediapipe as mp
@@ -132,5 +134,31 @@ def register(request):
         form = RegisterForm()
     return render(request, 'register.html', {'form': form})
 
-def check_auth(request):
-    return JsonResponse({'is_authenticated': request.user.is_authenticated})
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            # Get cleaned data
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+
+            # Authenticate user
+            user = authenticate(request, username=username, password=password)
+
+            if user is not None:
+                login(request, user)  # Log the user in
+                messages.success(request, 'You are now logged in!')
+                return JsonResponse({
+                    'success': True,
+                    'message': 'Login successful!',
+                    'redirect_url': '/'  # Or any other URL you want to redirect to
+                })
+            else:
+                return JsonResponse({'success': False, 'error': 'Invalid username or password'})
+        else:
+            # Include form errors in the JSON response
+            return JsonResponse({'success': False, 'errors': form.errors.as_json()})
+    
+    # Handle GET requests or invalid POST requests
+    form = LoginForm()
+    return render(request, 'login.html', {'form': form})

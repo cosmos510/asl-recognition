@@ -10,4 +10,5 @@ urlpatterns = [
     path('upload_frame/', views.upload_frame, name='upload_frame'),
     path('about/', views.about, name='about'),
     path('register/', views.register, name='register'),
+    path('login/', views.login_view, name='login'),
 ]

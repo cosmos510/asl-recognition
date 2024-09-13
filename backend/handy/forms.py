@@ -1,12 +1,13 @@
 from django import forms
-from app.models import User
+from django.contrib.auth.models import User as DjangoUser
+from app.models import User as CustomUser
 
 class RegisterForm(forms.ModelForm):
     password1 = forms.CharField(widget=forms.PasswordInput())
     password2 = forms.CharField(widget=forms.PasswordInput())
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = ['username', 'email', 'password1', 'password2']
 
     def clean_password2(self):
@@ -17,8 +18,18 @@ class RegisterForm(forms.ModelForm):
         return password2
 
     def save(self, commit=True):
-        user = super().save(commit=False)
-        user.set_password(self.cleaned_data["password1"])
+        # Create and save the CustomUser
+        custom_user = super().save(commit=False)
+        custom_user.set_password(self.cleaned_data["password1"])
+        
         if commit:
-            user.save()
-        return user
+            custom_user.save()
+
+        # Create and save the DjangoUser
+        django_user = DjangoUser(username=custom_user.username, email=custom_user.email)
+        django_user.set_password(self.cleaned_data["password1"])
+
+        if commit:
+            django_user.save()
+
+        return custom_user

@@ -56,7 +56,7 @@ header nav a:hover {
 main {
     flex: 1;
     padding: 2rem;
-    background-color: #ffffff; /* Clean white background */
+    background-color: #ffffff; 
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin: 1rem 0;
@@ -64,43 +64,68 @@ main {
 
 /* Video container */
 .video-container {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+}
+
+.video {
+    margin-bottom:1rem;
 }
 
 video {
     border: 2px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 70%; 
+    height: auto;
 }
 .container2 {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 2rem auto;
+    padding: 0 1rem;
     text-align: center;
 }
 
-video:hover {
-    transform:(1.05);
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem 
+}
+.video-section {
+    flex: 1;
 }
 
-/* Prediction result */
-.prediction {
-    background-color:#e9ecef;
-    color:  #1e1e2f;
+.card {
+    -color: #e9ecef;
+     color: #1e1e2f;
+     padding: 1rem;
+     border-radius: 10px;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+     margin-top: 1rem;
+ }
+
+.instructions {
+    background-color: #d0e4f3; 
+    color: #1e1e2f;
     padding: 1rem;
     border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    margin: 1rem auto;
-    width: fit-content; /*s width to content */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-basis: 30%; 
 }
 
-.prediction h2 {
-    margin: 0; /* Remove default margin */
+
+.instructions h3 {
+    margin-top: 0; 
 }
 
+.instructions p {
+    margin: 0; 
+}
 
 /* Form styles */
 form {
-   -width: 400px;
+    width: 400px;
     margin: 3rem auto;
     padding: 2rem;
     border: none;

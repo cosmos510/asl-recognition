@@ -12,16 +12,22 @@
     <header id="header-container"></header>
     <main>
         <div class="container2">
-            <h1>ASL Recognition in Action</h1>
-            <div class="video-container">
-                <video id="webcam" width="640" height="480" autoplay></video>
-            </div>
-            <div class="prediction">
-                <h2>Prediction: <span id="prediction">Loading...</span></h2>
+            <h2>ASL Recognition in Action</h2>
+            <div class="content">
+                <div class="video-section">
+                    <div class="video-container">
+                        <video id="webcam" width="640" height="480" autoplay></video>
+                    </div>
+                    <div class="card prediction">
+                        <h2>Prediction: <span id="prediction">Loading...</span></h2>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </main>
-    <footer id="footer-container"></footer>
+    <footer id="footer-container">
+    </footer>
     <script src="/predict.js"></script>  
 </body>
 </html>

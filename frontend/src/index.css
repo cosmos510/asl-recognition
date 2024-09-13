@@ -140,7 +140,7 @@ video {
 }
 
 .card {
-    -color: #e9ecef;
+     
      color: #1e1e2f;
      padding: 1rem;
      border-radius: 10px;
@@ -218,4 +218,21 @@ footer {
     text-align: center;
     width: 100%;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        align-items: center; 
+    }
+
+    header nav {
+        flex-wrap: wrap; 
+        justify-content: center; 
+    }
+
+    .features {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }

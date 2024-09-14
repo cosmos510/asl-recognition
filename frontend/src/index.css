@@ -239,3 +239,137 @@ footer {
         justify-content: center;
     }
 }
+
+/* General Styles for Registration Page */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Registration Hero Section */
+.register-hero {
+    background-color: #007bff;
+    color: #fff;
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.register-hero-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.register-hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.register-btn-primary {
+    background-color: #0056b3;
+    color: #fff;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-btn-primary:hover {
+    background-color: #003d7f;
+}
+
+/* Registration Features Section */
+.register-features {
+    padding: 3rem 1rem;
+    background-color: #fff;
+    text-align: center;
+}
+
+.register-section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.register-feature-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.register-feature-item {
+    background-color: #f7f9fc;
+    padding: 2rem;
+    margin: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    width: 30%;
+    transition: transform 0.3s ease;
+}
+
+.register-feature-item:hover {
+    transform: translateY(-5px);
+}
+
+.register-feature-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.register-feature-item p {
+    font-size: 1rem;
+}
+
+/* Registration Form Section */
+.register-form-section {
+    padding: 4rem 1rem;
+    background-color: #f4f7fb;
+    text-align: center;
+}
+
+.register-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form input,
+form button {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: none;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Registration Footer */
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .register-feature-list {
+        flex-direction: column;
+    }
+
+    .register-feature-item {
+        width: 100%;
+    }
+
+    .register-navbar-menu {
+        flex-direction: column;
+        align-items: center;
+    }
+}

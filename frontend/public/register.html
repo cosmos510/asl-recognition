@@ -4,25 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real-Time ASL Recognition</title>
+    <title>Real-Time ASL Recognition - Register</title>
     <link rel="stylesheet" href="/static/css/style.css">
     <script defer src="/static/js/bundle.js"></script>
 </head>
 <body>
+    <!-- Unique Navigation Bar -->
     <header id="header-container">
     </header>
-    <main>
-        <div class="container">
-            <h2>Register</h2>
-            <form id="myForm" method="post">
+
+    <!-- Unique Hero Section -->
+    <section class="register-hero">
+        <div class="register-hero-content">
+            <h2>Unlock the Power of Real-Time ASL Recognition</h2>
+            <p>Register now and join a community transforming communication through technology.</p>
+            <a href="#register-form-section" class="register-btn-primary">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Unique Main Content Section -->
+
+    <!-- Unique Registration Form Section -->
+    <section id="register-form-section" class="register-form-section">
+        <div class="register-container form-container">
+            <h2>Create Your Account</h2>
+            <form id="registerForm" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit" id="submitButton" class="btn btn-primary">Register</button>
+                <button type="submit" id="registerSubmitButton" class="register-btn-primary">Register</button>
             </form>
         </div>
-    </main>
+    </section>
+
+    <!-- Unique Footer -->
     <footer id="footer-container">
+        
     </footer>
+
     <script src="/register.js"></script>
 </body>
 </html>

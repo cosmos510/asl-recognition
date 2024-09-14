@@ -1,6 +1,6 @@
 /* Header styles */
 header {
-    background-color: #1e1e2f;
+    background: linear-gradient(to bottom right, #1e1e2f, #2a2a3a, #4a4a6a); /* Dark blue center fading to lighter blue edges */
     color: white;
     padding: 1rem;
     box-shadow: 0 2px 5 rgba(0, 0, 0, 0.);
@@ -150,15 +150,15 @@ video {
 
 /* Form styles */
 form {
-    width: 400px;
-    margin: 3rem auto;
+    width: 400px;                      /* Set a fixed width for the form */
     padding: 2rem;
     border: none;
     border-radius: 10px;
     background-color: #ffffff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-    box-sizing: border-box;  /* Ensure padding is included in width */
+    box-sizing: border-box;
+    display: flex;                     /* Flexbox to align content */
+    flex-direction: column;   /* Ensure padding is included in width */
 }
 
 form:hover {
@@ -194,7 +194,8 @@ form button {
     display: block;
     width: 100%;
     padding: 0.75rem;
-    background-color: #007bff;
+    background: linear-gradient(to bottom right, #1e1e2f, #2c2c40, #3f3f5f); /* Dark blue to lighter blue gradient */
+
     color: white;
     border: none;
     border-radius: 5px;
@@ -215,7 +216,7 @@ form button:hover {
 }
 
 footer {
-    background-color: #212529;
+    background: linear-gradient(to bottom right, #1e1e2f, #2a2a3a, #4a4a6a); /* Dark blue center fading to lighter blue edges */
     color: white;
     padding: 0.5rem 0;
     text-align: center;
@@ -238,17 +239,44 @@ footer {
         flex-wrap: wrap;
         justify-content: center;
     }
+    .container3 {
+        flex-direction: column;         /* Stack hero and form vertically */
+        padding: 1.5rem;
+    }
+
+    .register-hero, #myForm {
+        width: 100%;                   /* Full width on small screens */
+    }
+
+    .register-hero {
+        margin-bottom: 2rem;            /* Space between stacked sections */
+    }
 }
 
 
-/* Registration Hero Section */
+.container3 {
+    display: flex;                     /* Use flexbox for layout */
+    justify-content: space-between;   /* Space between elements */
+    align-items: stretch;              /* Stretch items to match heights */
+    gap: 2rem;                         /* Space between sections */
+    max-width: 1200px;                 /* Limit the container width */
+    margin: 0 auto;                    /* Center the container */
+    padding: 3rem;                     /* Padding around the container */
+}
+
+/* Register Hero Section */
 .register-hero {
-    background-color: #007bff;
+    background: linear-gradient(to bottom right, #1e1e2f, #2c2c40, #3f3f5f); /* Dark blue to lighter blue gradient */
     color: #fff;
-    padding: 3rem 0;
-    text-align: center;
+    padding: 2rem;
+    flex: 1;                           
+    border-radius: 10px;
+    box-sizing: border-box;
+    min-width: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Corrected box-shadow */
 }
 
+/* Content within Register Hero */
 .register-hero-content h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
@@ -259,50 +287,3 @@ footer {
     margin-bottom: 2rem;
 }
 
-.register-btn-primary {
-    background-color: #0056b3;
-    color: #fff;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.register-btn-primary:hover {
-    background-color: #003d7f;
-}
-
-/* Registration Features Section */
-
-
-/* Registration Form Section */
-.register-form-section {
-    text-align: center;
-}
-
-.register-container {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-
-
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .register-feature-list {
-        flex-direction: column;
-    }
-
-    .register-feature-item {
-        width: 100%;
-    }
-
-    .register-navbar-menu {
-        flex-direction: column;
-        align-items: center;
-    }
-}

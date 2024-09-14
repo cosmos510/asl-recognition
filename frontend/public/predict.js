@@ -55,7 +55,6 @@ function captureFrame() {
     const context = canvas.getContext('2d');
     context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
     
-    // Ensure canvas.toBlob is supported
     if (canvas.toBlob) {
         canvas.toBlob(blob => {
             if (blob) {

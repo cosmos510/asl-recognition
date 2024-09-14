@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(data => {
                 if (data.success) {
                     alert("Login successful!");
-                    window.location.href = data.redirect_url || "/"; // Redirect to specified URL or homepage
+                    window.location.href = data.redirect_url || "/";
                 } else {
                     alert("Login failed: " + (data.error || "An error occurred."));
                 }

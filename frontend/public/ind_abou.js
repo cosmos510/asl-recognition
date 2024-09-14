@@ -22,8 +22,6 @@ async function loadComponent(url) {
 }
 
 
-
-
 function displayResult(result) {
     const predictionDiv = document.querySelector('.prediction');
     if (predictionDiv) {

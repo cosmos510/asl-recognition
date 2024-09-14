@@ -1,8 +1,6 @@
-
 from django import forms
 from django.contrib.auth.models import User as DjangoUser
 from app.models import User as CustomUser
-from django.contrib.auth import authenticate
 
 class RegisterForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
@@ -20,14 +18,11 @@ class RegisterForm(forms.ModelForm):
         return confirm_password
 
     def save(self, commit=True):
-        # Create and save the CustomUser
         custom_user = super().save(commit=False)
         custom_user.set_password(self.cleaned_data["password"])
         
         if commit:
             custom_user.save()
-
-        # Create and save the DjangoUser
         django_user = DjangoUser(username=custom_user.username, email=custom_user.email)
         django_user.set_password(self.cleaned_data["password"])
 
@@ -35,9 +30,6 @@ class RegisterForm(forms.ModelForm):
             django_user.save()
 
         return custom_user
-    
-from django import forms
-from django.contrib.auth import get_user_model
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=150)

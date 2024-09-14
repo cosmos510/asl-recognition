@@ -1,21 +1,21 @@
 document.addEventListener("DOMContentLoaded", function() {
-    
+
     fetch('/header.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('header-container').innerHTML = data;
         })
         .catch(error => console.error('Error loading header:', error));
-        fetch('/footer.html')
+
+    fetch('/footer.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('footer-container').innerHTML = data;
         })
         .catch(error => console.error('Error loading footer:', error));
 
-    // Handle form submission
     const form = document.getElementById("myForm");
-    
+
     if (form) { 
         form.addEventListener("submit", function(event) {
             event.preventDefault(); 
@@ -34,14 +34,25 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(data => {
                 if (data.success) {
                     alert("Registration Successful!");
-                    window.location.href = "/"; // Redirect to the homepage or any other page
+                    window.location.href = "/";
                 } else {
-                    alert("Registration failed. Please correct the errors.");
+                    displayErrors(data.errors);
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
             });
         });
+    }
+
+    function displayErrors(errors) {
+        document.querySelectorAll('.error-message').forEach(container => container.textContent = '');
+
+        for (const [field, messages] of Object.entries(errors)) {
+            const errorContainer = document.getElementById(`${field}-error`);
+            if (errorContainer) {
+                errorContainer.textContent = Array.isArray(messages) ? messages.join(', ') : messages;
+            }
+        }
     }
 });

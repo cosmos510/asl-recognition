@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +10,9 @@
 </head>
 <body>
     <header id="header-container">
+        <!-- Header content will be loaded here -->
     </header>
     <main>
-        
         <div class="container3">
             <section class="register-hero">
                 <div class="register-hero-content">
@@ -21,19 +20,35 @@
                     <p>Register now and join a community transforming communication through technology.</p>
                 </div>
             </section>
-            <form id="myForm" method="post">
+            <form id="myForm" method="post" action="{% url 'register' %}">
                 {% csrf_token %}
-                {{ form.as_p }}
+                <div class="form-group">
+                    {{ form.username.label_tag }}
+                    {{ form.username }}
+                    <div class="error-message" id="username-error" aria-live="polite"></div>
+                </div>
+                <div class="form-group">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                    <div class="error-message" id="email-error" aria-live="polite"></div>
+                </div>
+                <div class="form-group">
+                    {{ form.password.label_tag }}
+                    {{ form.password }}
+                    <div class="error-message" id="password-error" aria-live="polite"></div>
+                </div>
+                <div class="form-group">
+                    {{ form.confirm_password.label_tag }}
+                    {{ form.confirm_password }}
+                    <div class="error-message" id="confirm_password-error" aria-live="polite"></div>
+                </div>
                 <button type="submit" id="submitButton" class="btn btn-primary">Register</button>
             </form>
         </div>
     </main>
     <footer id="footer-container">
+        <!-- Footer content will be loaded here -->
     </footer>
     <script src="/register.js"></script>
 </body>
 </html>
-
-
-
-

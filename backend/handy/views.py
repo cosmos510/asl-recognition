@@ -128,10 +128,17 @@ def register(request):
             messages.success(request, 'Your account has been created and you are now logged in!')
             return JsonResponse({'success': True, 'message': 'Registration successful!'})
         else:
-            # Include form errors in the JSON response
-            return JsonResponse({'success': False, 'errors': form.errors.as_json()})
+            # Convert form errors to a dictionary
+            errors = {}
+            for field, field_errors in form.errors.items():
+                if field == "__all__":
+                    errors["non_field_errors"] = field_errors
+                else:
+                    errors[field] = field_errors
+            return JsonResponse({'success': False, 'errors': errors})
     else:
         form = RegisterForm()
+
     return render(request, 'register.html', {'form': form})
 
 def login_view(request):

@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate 
 from .forms import LoginForm
 from django.contrib.auth import authenticate, login as auth_login
-
+from django.contrib.auth.decorators import login_required
 import cv2
 import mediapipe as mp
 import pickle
@@ -111,7 +111,7 @@ def video_feed(request):
 def predict(request):
     return render(request, 'predict.html')
 
-
+@login_required
 def about(request):
     return render(request, 'about.html')
 

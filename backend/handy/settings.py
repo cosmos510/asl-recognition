@@ -47,7 +47,11 @@ CORS_ALLOWED_ORIGINS = [
 ]
 CORS_ALLOW_ALL_ORIGINS = True
 ROOT_URLCONF = 'handy.urls'
-
+SESSION_COOKIE_DOMAIN = 'localhost'
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

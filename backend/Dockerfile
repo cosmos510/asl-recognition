@@ -5,9 +5,15 @@ FROM python:3.11
 WORKDIR /usr/src/app
 
 # Install dependencies
+RUN apt-get update && \
+    apt-get install -y libgl1-mesa-glx && \
+    apt-get upgrade -y && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copy and install Python dependencies
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
-RUN apt-get update && apt-get install -y libgl1-mesa-glx && pip install opencv-python && apt-get upgrade -y
 # Copy the project files
 COPY . .
 

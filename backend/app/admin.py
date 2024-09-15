@@ -24,7 +24,7 @@ class PredictionAdmin(admin.ModelAdmin):
 
 @admin.register(Feedback)
 class FeedbackAdmin(admin.ModelAdmin):
-    list_display = ('feedback_id', 'user', 'frame', 'comment', 'timestamp')
+    list_display = ('feedback_id', 'user', 'comment', 'timestamp')
 
 
 @admin.register(TrainingTask)

@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User as DjangoUser
 from app.models import User as CustomUser
-
+from app.models import Feedback
 class RegisterForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
     confirm_password = forms.CharField(widget=forms.PasswordInput())
@@ -34,3 +34,11 @@ class RegisterForm(forms.ModelForm):
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=150)
     password = forms.CharField(widget=forms.PasswordInput())
+
+class FeedbackForm(forms.ModelForm):
+    class Meta:
+        model = Feedback
+        fields = ['comment']
+        widgets = {
+            'comment': forms.Textarea(attrs={'rows': 5, 'cols': 40, 'placeholder': 'Write your feedback here...'}),
+        }

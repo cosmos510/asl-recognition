@@ -39,7 +39,6 @@ class Prediction(models.Model):
 class Feedback(models.Model):
     feedback_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    frame = models.ForeignKey(Frame, on_delete=models.CASCADE)
     comment = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
 

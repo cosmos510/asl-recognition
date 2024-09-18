@@ -15,12 +15,13 @@
     </header>
     <main>
         <div class="container3">
-            <h2>Feedback</h2>
-            <form id="FeedbackForm" method="post" action="/feedback/">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" id="submitButton" class="btn btn-primary">Login</button>
-            </form>
+            <h2>Add Feedback</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit Feedback</button>
+</form>
         </div>
     </main>
     <footer id="footer-container">

@@ -6,15 +6,17 @@ import mediapipe as mp
 from django.contrib import messages
 from django.http import JsonResponse, StreamingHttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, get_user
+from django.utils.functional import SimpleLazyObject
+from django.contrib.auth import get_user_model
 
 from app.models import User
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, FeedbackForm
 
-
+User = get_user_model()
 model_dict = pickle.load(open('/usr/src/app/model1.p', 'rb'))
 model = model_dict['model']
 
@@ -106,8 +108,10 @@ def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)
+            user = form.save(commit=False)  # Do not commit yet, we'll add custom fields if needed
+            user.set_password(form.cleaned_data.get('password'))  # Ensure password is hashed
+            user.save()  # Now save the user
+            login(request, user)  # Log in the user after registration
             messages.success(request, 'Your account has been created and you are now logged in!')
             return JsonResponse({'success': True, 'message': 'Registration successful!'})
         else:
@@ -121,27 +125,55 @@ def register(request):
     else:
         form = RegisterForm()
     return render(request, 'register.html', {'form': form})
-
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-            user = authenticate(request, username=username, password=password)
+            user = authenticate(request, username=username, password=password)  # Authenticate the user using the custom user model
 
             if user is not None:
-                login(request, user)
-                messages.success(request, 'You are now logged in!')
-                return JsonResponse({
+                login(request, user)  # Log the user in
+                
+                # Set the user_id in a cookie (use user.user_id since your primary key is user_id)
+                response = JsonResponse({
                     'success': True,
                     'message': 'Login successful!',
                     'redirect_url': '/'
                 })
+                
+                # Set the cookie to store user_id with a max age of 1 hour (3600 seconds)
+                response.set_cookie('user_id', user.user_id, max_age=3600)  # Use user.user_id
+                
+                # Send success message
+                messages.success(request, 'You are now logged in!')
+                
+                return response
             else:
                 return JsonResponse({'success': False, 'error': 'Invalid username or password'})
         else:
             return JsonResponse({'success': False, 'errors': form.errors.as_json()})
-    
+
+    # For GET requests, render the login form
     form = LoginForm()
     return render(request, 'login.html', {'form': form})
+
+
+
+@login_required  # Ensure only logged-in users can access this view
+def add_feedback(request):
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            feedback = form.save(commit=False)
+            
+            # Link the feedback to the logged-in user using user.user_id
+            feedback.user = request.user  # No need to use user_id here, request.user will work
+
+            feedback.save()
+            return redirect('/')  # Redirect to a thank-you page or another route
+    else:
+        form = FeedbackForm()
+
+    return render(request, 'add_feedback.html', {'form': form})

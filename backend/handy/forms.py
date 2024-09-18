@@ -1,13 +1,13 @@
 from django import forms
 from django.contrib.auth.models import User as DjangoUser
-from app.models import User as CustomUser
+from app.models import User
 from app.models import Feedback
 class RegisterForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
     confirm_password = forms.CharField(widget=forms.PasswordInput())
 
     class Meta:
-        model = CustomUser
+        model = User
         fields = ['username', 'email', 'password', 'confirm_password']
 
     def clean_confirm_password(self):
@@ -39,6 +39,3 @@ class FeedbackForm(forms.ModelForm):
     class Meta:
         model = Feedback
         fields = ['comment']
-        widgets = {
-            'comment': forms.Textarea(attrs={'rows': 5, 'cols': 40, 'placeholder': 'Write your feedback here...'}),
-        }

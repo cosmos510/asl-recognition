@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User as DjangoUser
 from app.models import User
 from app.models import Feedback
+import re
 
 
 class RegisterForm(forms.ModelForm):
@@ -11,6 +12,18 @@ class RegisterForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password', 'confirm_password']
+
+    def clean_password(self):
+        password = self.cleaned_data.get('password')
+        if len(password) < 8:
+            raise forms.ValidationError("Password must be at least 8 characters long.")
+        if not re.search(r'[a-zA-Z]', password):
+            raise forms.ValidationError("Password must contain at least one letter.")
+        if not re.search(r'[0-9]', password):
+            raise forms.ValidationError("Password must contain at least one number.")
+        if not re.search(r'[\W_]', password):
+            raise forms.ValidationError("Password must contain at least one symbol.")
+        return password
 
     def clean_confirm_password(self):
         password = self.cleaned_data.get('password')
@@ -32,7 +45,6 @@ class RegisterForm(forms.ModelForm):
 
         if commit:
             django_user.save()
-
         return custom_user
 
 

@@ -100,7 +100,6 @@ def predict(request):
     return render(request, 'predict.html')
 
 
-@login_required
 def about(request):
     return render(request, 'about.html')
 

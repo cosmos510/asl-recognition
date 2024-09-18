@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.models import User as DjangoUser
 from app.models import User
 from app.models import Feedback
+
+
 class RegisterForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
     confirm_password = forms.CharField(widget=forms.PasswordInput())
@@ -20,10 +22,12 @@ class RegisterForm(forms.ModelForm):
     def save(self, commit=True):
         custom_user = super().save(commit=False)
         custom_user.set_password(self.cleaned_data["password"])
-        
+
         if commit:
             custom_user.save()
-        django_user = DjangoUser(username=custom_user.username, email=custom_user.email)
+        django_user = DjangoUser(
+            username=custom_user.username,
+            email=custom_user.email)
         django_user.set_password(self.cleaned_data["password"])
 
         if commit:
@@ -31,9 +35,11 @@ class RegisterForm(forms.ModelForm):
 
         return custom_user
 
+
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=150)
     password = forms.CharField(widget=forms.PasswordInput())
+
 
 class FeedbackForm(forms.ModelForm):
     class Meta:

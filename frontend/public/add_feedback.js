@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Load header and footer
+
     fetch('/header.html')
         .then(response => response.text())
         .then(data => {

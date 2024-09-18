@@ -21,11 +21,13 @@ model = model_dict['model']
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands()
 
-global_predicted_character = "No prediction" 
+global_predicted_character = "No prediction"
+
 
 def get_prediction(request):
     global global_predicted_character
     return JsonResponse({'prediction': global_predicted_character})
+
 
 @csrf_exempt
 def upload_frame(request):
@@ -75,6 +77,7 @@ def upload_frame(request):
     return JsonResponse(
         {'status': 'failed', 'error': 'Invalid request method'}, status=400)
 
+
 def video_feed(request):
     def generate():
         cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
@@ -92,15 +95,19 @@ def video_feed(request):
         generate(),
         content_type='multipart/x-mixed-replace; boundary=frame')
 
+
 def predict(request):
     return render(request, 'predict.html')
+
 
 @login_required
 def about(request):
     return render(request, 'about.html')
 
+
 def home(request):
     return render(request, 'index.html')
+
 
 def register(request):
     if request.method == 'POST':
@@ -110,8 +117,10 @@ def register(request):
             user.set_password(form.cleaned_data.get('password'))
             user.save()
             login(request, user)
-            messages.success(request, 'Your account has been created and you are now logged in!')
-            return JsonResponse({'success': True, 'message': 'Registration successful!'})
+            messages.success(
+                request, 'Your account has been created and you are now logged in!')
+            return JsonResponse(
+                {'success': True, 'message': 'Registration successful!'})
         else:
             errors = {}
             for field, field_errors in form.errors.items():
@@ -123,6 +132,7 @@ def register(request):
     else:
         form = RegisterForm()
     return render(request, 'register.html', {'form': form})
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -143,12 +153,15 @@ def login_view(request):
                 messages.success(request, 'You are now logged in!')
                 return response
             else:
-                return JsonResponse({'success': False, 'error': 'Invalid username or password'})
+                return JsonResponse(
+                    {'success': False, 'error': 'Invalid username or password'})
         else:
-            return JsonResponse({'success': False, 'errors': form.errors.as_json()})
+            return JsonResponse(
+                {'success': False, 'errors': form.errors.as_json()})
 
     form = LoginForm()
     return render(request, 'login.html', {'form': form})
+
 
 @login_required
 def add_feedback(request):

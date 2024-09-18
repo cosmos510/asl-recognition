@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alert("Registration Successful!");
+                    alert("Registration Successful, you are now log in!");
                     window.location.href = "/";
                 } else {
                     displayErrors(data.errors);

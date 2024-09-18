@@ -141,7 +141,6 @@ def login_view(request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(request, username=username, password=password)
-
             if user is not None:
                 login(request, user)
                 response = JsonResponse({
@@ -158,7 +157,6 @@ def login_view(request):
         else:
             return JsonResponse(
                 {'success': False, 'errors': form.errors.as_json()})
-
     form = LoginForm()
     return render(request, 'login.html', {'form': form})
 
@@ -171,8 +169,20 @@ def add_feedback(request):
             feedback = form.save(commit=False)
             feedback.user = request.user
             feedback.save()
-            return redirect('/')
-    else:
-        form = FeedbackForm()
+            if feedback is not None:
+                response = JsonResponse({
+                    'success': True,
+                    'message': 'Login successful!',
+                    'redirect_url': '/'
+                })
+                messages.success(request, 'Thank you for your feedback!')
+                return response
+            else:
+                return JsonResponse(
+                    {'success': False, 'error': 'An error occurred while saving your feedback'})
+        else:
+            return JsonResponse(
+                {'success': False, 'errors': form.errors.as_json()})
 
+    form = FeedbackForm()
     return render(request, 'add_feedback.html', {'form': form})

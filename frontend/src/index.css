@@ -242,19 +242,27 @@ footer {
     }
     .container-register {
         flex-direction: column;         
+    }
+    .container3 {
+        flex-direction: column;         
         padding: 1.5rem;
     }
 
-    .register-hero, #myForm {
+    #myForm, #loginForm {
         width: 100%;                  
     }
-
     .register-hero {
-        margin-bottom: 2rem;            
+        flex-direction: column;
     }
+
+    
     canvas {
         width: 100% !important;
         height: auto !important;
+    }
+    main {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
 

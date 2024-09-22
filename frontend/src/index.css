@@ -59,6 +59,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow: hidden;
 }
 
 /* index */
@@ -251,7 +252,12 @@ footer {
     .register-hero {
         margin-bottom: 2rem;            
     }
+    canvas {
+        width: 100% !important;
+        height: auto !important;
+    }
 }
+
 
 
 .container-register {

@@ -12,5 +12,5 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('login/', views.login_view, name='login'),
     path('feedback/', views.add_feedback, name='add_feedback'),
-    path('three/', views.three, name='three'),
+    path('minigame/', views.minigame, name='minigame'),
 ]

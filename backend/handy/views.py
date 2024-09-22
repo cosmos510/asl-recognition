@@ -186,5 +186,5 @@ def add_feedback(request):
     form = FeedbackForm()
     return render(request, 'add_feedback.html', {'form': form})
 
-def three(request):
-    return render(request, 'three.html')
+def minigame(request):
+    return render(request, 'minigame.html')

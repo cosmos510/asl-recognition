@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('three-canvas'), antialias: true });
 
+    // Set initial size of the renderer
     const footerHeight = 100; // Adjust based on your footer height
     renderer.setSize(window.innerWidth, window.innerHeight - footerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -18,7 +19,10 @@ document.addEventListener('DOMContentLoaded', function () {
     camera.lookAt(cube.position);
 
     let isAnimating = true; // Flag to control animation
-    const card = document.getElementById('info-card'); // Get the card from the HTML
+    const card = document.createElement('div');
+    card.classList.add('card'); // Add card class for styling
+    card.innerText = "You clicked the cube!";
+    document.body.appendChild(card);
 
     function animate() {
         requestAnimationFrame(animate);
@@ -49,13 +53,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const intersects = raycaster.intersectObjects([cube]);
 
         if (intersects.length > 0) {
-            isAnimating = !isAnimating; // Toggle animation
-
-            // Show or hide the card
+            isAnimating = !isAnimating;
             if (isAnimating) {
-                card.style.display = 'none'; // Hide card
+                card.classList.remove('show');
             } else {
-                card.style.display = 'block'; // Show card
+                card.classList.add('show'); 
             }
         }
     }

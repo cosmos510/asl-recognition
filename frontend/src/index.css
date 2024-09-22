@@ -309,20 +309,17 @@ footer {
 }
 .card {
     position: absolute;
-    bottom: 120px; /* Adjust based on your layout */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(219, 22, 22, 0.8);
-    color: white;
+    top: 20px;
+    left: 20px;
     padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: opacity 0.3s ease;
-    opacity: 0; /* Initially hidden */
-    pointer-events: none; /* Prevent interaction when hidden */
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card.show {
-    opacity: 1; /* Fully visible */
-    pointer-events: auto; /* Allow interaction when visible */
+    opacity: 1;
+    pointer-events: auto;
 }

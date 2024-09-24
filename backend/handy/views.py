@@ -11,7 +11,14 @@ from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.contrib.auth import get_user_model
-
+from django.core.mail import send_mail
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.loader import render_to_string
+from django.utils.encoding import force_bytes
+from django.utils.encoding import force_str
+from django.urls import reverse
 from .forms import RegisterForm, LoginForm, FeedbackForm
 
 User = get_user_model()
@@ -113,13 +120,32 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
+            user.is_active = False
             user.set_password(form.cleaned_data.get('password'))
             user.save()
-            login(request, user)
+            token = default_token_generator.make_token(user)
+            uid = urlsafe_base64_encode(force_bytes(user.pk))
+            current_site = get_current_site(request)
+            mail_subject = 'Activate your account'
+            activation_link = reverse('activate', kwargs={'uidb64': uid, 'token': token})
+            activation_url = f"http://{current_site.domain}{activation_link}"
+            message = render_to_string('verification_email.html', {
+            'user': user,
+            'domain': current_site.domain,
+            'uid': uid,
+            'token': token,
+            'activation_url': activation_url,
+            })
+            send_mail(
+                mail_subject,
+                message,
+                'maximemartin510@gmail.com',
+                [user.email],
+                fail_silently=False,
+            )
             messages.success(
-                request, 'Your account has been created and you are now logged in!')
-            return JsonResponse(
-                {'success': True, 'message': 'Registration successful!'})
+                request, 'Please confirm your email address to complete the registration.')
+            return JsonResponse({'success': True, 'message': 'Registration successful! Please check your email for verification.'})
         else:
             errors = {}
             for field, field_errors in form.errors.items():
@@ -132,6 +158,21 @@ def register(request):
         form = RegisterForm()
     return render(request, 'register.html', {'form': form})
 
+def activate(request, uidb64, token):
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    if user is not None and default_token_generator.check_token(user, token):
+        user.is_active = True
+        user.save()
+        messages.success(request, 'Your email has been confirmed. You can now log in.')
+        return redirect('login')
+    else:
+        messages.error(request, 'The activation link is invalid or has expired.')
+        return redirect('register') 
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -141,21 +182,31 @@ def login_view(request):
             password = form.cleaned_data.get('password')
             user = authenticate(request, username=username, password=password)
             if user is not None:
-                login(request, user)
-                response = JsonResponse({
-                    'success': True,
-                    'message': 'Login successful!',
-                    'redirect_url': '/'
-                })
-                response.set_cookie('user_id', user.user_id, max_age=3600)
-                messages.success(request, 'You are now logged in!')
-                return response
+                if user.is_active:
+                    login(request, user)
+                    response = JsonResponse({
+                        'success': True,
+                        'message': 'Login successful!',
+                        'redirect_url': '/'
+                    })
+                    response.set_cookie('user_id', user.user_id, max_age=3600)
+                    messages.success(request, 'You are now logged in!')
+                    return response
+                else:
+                    return JsonResponse({
+                        'success': False,
+                        'error': 'Your account is not activated. Please check your email for the activation link.'
+                    })
             else:
-                return JsonResponse(
-                    {'success': False, 'error': 'Invalid username or password'})
+                return JsonResponse({
+                    'success': False,
+                    'error': 'Invalid username or password'
+                })
         else:
-            return JsonResponse(
-                {'success': False, 'errors': form.errors.as_json()})
+            return JsonResponse({
+                'success': False,
+                'errors': form.errors.as_json()
+            })
     form = LoginForm()
     return render(request, 'login.html', {'form': form})
 

@@ -4,26 +4,24 @@ import numpy as np
 import mediapipe as mp
 
 from django.contrib import messages
-from django.http import JsonResponse, StreamingHttpResponse
-from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import login, authenticate, get_user_model
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login, authenticate
-from django.contrib.auth import get_user_model
 from django.core.mail import send_mail
-from django.contrib.auth.tokens import default_token_generator
+from django.http import JsonResponse, StreamingHttpResponse
+from django.shortcuts import render, redirect
+from django.urls import reverse
+from django.utils.encoding import force_bytes, force_str
+from django.views.decorators.csrf import csrf_exempt
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
-from django.utils.encoding import force_bytes
-from django.utils.encoding import force_str
-from django.urls import reverse
-from .forms import RegisterForm, LoginForm, FeedbackForm
-from rest_framework.response import Response
+from django.contrib.auth.tokens import default_token_generator
+from django.contrib.auth import authenticate, login as auth_login
+
 from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
-
+from .forms import RegisterForm, LoginForm, FeedbackForm
 
 User = get_user_model()
 model_dict = pickle.load(open('/usr/src/app/model1.p', 'rb'))

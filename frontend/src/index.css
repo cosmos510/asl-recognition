@@ -25,6 +25,12 @@ header nav {
     gap: 1rem;
     margin-top: 0.5rem;
 }
+#auth-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
 
 header nav a {
     color: #f0f8ff;
@@ -218,7 +224,7 @@ form button:hover {
 footer {
     background: linear-gradient(to bottom right, #1e1e2f, #2a2a3a, #4a4a6a);
     color: white;
-    height: 100px;
+    height: 50px;
     padding: 0.5rem 0;
     text-align: center;
     width: 100%;

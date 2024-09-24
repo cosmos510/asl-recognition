@@ -1,8 +1,6 @@
-// index.js
 import './index.css';
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Load header
     fetch('/header.html')
         .then(response => {
             if (!response.ok) {
@@ -12,11 +10,9 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(data => {
             document.getElementById('header-container').innerHTML = data;
-            updateNavbar(); // Call updateNavbar after header is loaded
+            updateNavbar();
         })
         .catch(error => console.error('Error loading header:', error));
-
-    // Load footer
     fetch('/footer.html')
         .then(response => {
             if (!response.ok) {
@@ -31,10 +27,9 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 async function updateNavbar() {
-    console.log('updateNavbar called'); // Debug log
     try {
         const response = await fetch('/api/user-status/', {
-            credentials: 'include', // Include cookies for session management
+            credentials: 'include',
         });
 
         if (!response.ok) {
@@ -42,26 +37,19 @@ async function updateNavbar() {
         }
 
         const data = await response.json();
-        console.log('User status data:', data); // Debug log
-
         const authLinks = document.getElementById('auth-links');
-
-        // Ensure authLinks is not null
         if (!authLinks) {
             console.error('Element with ID "auth-links" not found');
-            return; // Exit the function early
+            return;
         }
-
-        // Update navbar based on user status
         if (data.logged_in) {
             authLinks.innerHTML = `
-                <a href="/profile" class="nav-link">${data.username}</a> <!-- Add existing class here -->
-                <a href="/logout" class="nav-link">Logout</a> <!-- Add existing class here -->
+                <a href="/logout" class="nav-link">Logout</a>
             `;
         } else {
             authLinks.innerHTML = `
-                <a href="/login" class="nav-link">Login</a> <!-- Add existing class here -->
-                <a href="/register" class="nav-link">Register</a> <!-- Add existing class here -->
+                <a href="/login" class="nav-link">Login</a>
+                <a href="/register" class="nav-link">Register</a>
             `;
         }
     } catch (error) {

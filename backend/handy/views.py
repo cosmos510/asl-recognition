@@ -20,6 +20,10 @@ from django.utils.encoding import force_bytes
 from django.utils.encoding import force_str
 from django.urls import reverse
 from .forms import RegisterForm, LoginForm, FeedbackForm
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+
+
 
 User = get_user_model()
 model_dict = pickle.load(open('/usr/src/app/model1.p', 'rb'))
@@ -239,3 +243,10 @@ def add_feedback(request):
 
 def minigame(request):
     return render(request, 'minigame.html')
+
+@api_view(['GET'])
+def get_user_status(request):
+    if request.user.is_authenticated:
+        return Response({'logged_in': True, 'username': request.user.username})
+    else:
+        return Response({'logged_in': False})

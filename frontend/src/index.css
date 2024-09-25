@@ -139,30 +139,45 @@ video {
     flex: 1;
 }
 
+/* Enhanced styling for the prediction card */
+.card-prediction {
+    color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    margin-top: 1rem;
+    background: linear-gradient(to bottom right, #1e1e2f, #2a2a3a, #4a4a6a);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-prediction:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced styling for the prediction container */
 .prediction-container {
     position: absolute;
-    right: 25%;
-    top: 50%;
-    transform: translateY(-50%);
+    right: 10%; 
+    top: 50%; 
+    transform: translateY(-50%); 
     padding: 1rem;
-    width: 250px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 1s ease-in-out;
+    width: 250px; 
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1s ease-in-out; 
 }
 
-/* Animation for the prediction text */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Animation for the prediction text */
+/* Styling for the prediction text */
 .prediction-text {
-    color: #1e1e2f;
+    color: #ffffff;
     font-size: 1.5rem;
-    animation: pulse 1.5s infinite;
+    animation: pulse 1.5s infinite; 
+    text-align: center;
+    margin: 0;
+    padding: 0rem;
+    right: 10%;
 }
 
 /* Pulsing effect */

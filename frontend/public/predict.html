@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Home - Real-Time ASL Recognition</title>
     <link rel="stylesheet" href="/static/css/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script defer src="/static/js/bundle.js"></script>
 </head>
 <body>
@@ -22,13 +21,12 @@
                     </div>
                 </div>
                 <div class="card-prediction">
+                    <h2>Prediction:</h2>
+                    <p class="prediction-text" id="prediction-text">Your Prediction Will Appear Here!</p>
                     <canvas id="prediction-canvas"></canvas>
                 </div>
             </div>
-            <button  href="/feedback">Give Feedback</button>
-            <div class="prediction-container">
-                <p class="prediction-text" id="prediction-text">Your Prediction Will Appear Here!</p>
-            </div>
+            <button class="feedback-button" onclick="window.location.href='/feedback'">Give Feedback</button>
         </div>
     </main>
     <footer id="footer-container"></footer>

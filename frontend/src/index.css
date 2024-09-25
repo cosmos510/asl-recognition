@@ -139,19 +139,37 @@ video {
     flex: 1;
 }
 
-.card-prediction {
-    color: #1e1e2f;
-    padding: 1.5rem;
+.prediction-container {
+    position: absolute;
+    right: 25%;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 1rem;
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-top: 1rem;
-    background-color: #fff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 1s ease-in-out;
 }
 
-.card-prediction:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+/* Animation for the prediction text */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animation for the prediction text */
+.prediction-text {
+    color: #1e1e2f;
+    font-size: 1.5rem;
+    animation: pulse 1.5s infinite;
+}
+
+/* Pulsing effect */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
 /* Form Styles */

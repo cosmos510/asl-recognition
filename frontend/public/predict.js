@@ -41,7 +41,7 @@ function sendFrameToServer(blob) {
     })
     .then(response => response.json())
     .then(data => {
-        document.getElementById('prediction').innerText = data.prediction || 'No prediction';
+        document.getElementById('prediction-text').innerText = data.prediction || 'No prediction';
     })
     .catch(error => console.error('Error:', error));
 }
@@ -60,7 +60,7 @@ function captureFrame() {
             if (blob) {
                 sendFrameToServer(blob);
             } else {
-                
+                console.error('Failed to create blob from canvas.');
             }
         }, 'image/jpeg');
     } else {
@@ -69,4 +69,4 @@ function captureFrame() {
 }
 
 setupWebcam();
-setInterval(captureFrame, 1000);  
+setInterval(captureFrame, 1000);

@@ -142,12 +142,14 @@ video {
 /* Enhanced styling for the prediction card */
 .card-prediction {
     color: #fff;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 15px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
     margin-top: 1rem;
     background: linear-gradient(to bottom right, #1e1e2f, #2a2a3a, #4a4a6a);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-height: 120px;
+    overflow: hidden;
 }
 
 .card-prediction:hover {
@@ -168,11 +170,14 @@ video {
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
     animation: fadeIn 1s ease-in-out; 
 }
+.card-prediction h2 {
+    margin-bottom: 0.5rem;
+}
 
 /* Styling for the prediction text */
 .prediction-text {
     color: #ffffff;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     animation: pulse 1.5s infinite; 
     text-align: center;
     margin: 0;

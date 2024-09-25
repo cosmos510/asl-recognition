@@ -25,12 +25,7 @@ header nav {
     gap: 1rem;
     margin-top: 0.5rem;
 }
-#auth-links {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 0.5rem;
-}
+
 
 header nav a {
     color: #f0f8ff;
@@ -38,6 +33,12 @@ header nav a {
     padding: 0.5rem 1rem;
     border-radius: 5px;
     transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+header nav #auth-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
 }
 
 header nav a:hover {

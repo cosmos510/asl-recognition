@@ -15,4 +15,5 @@ urlpatterns = [
     path('minigame/', views.minigame, name='minigame'),
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
     path('api/user-status/', views.get_user_status, name='user_status'),
+    path('logout/', views.logout_view, name='logout'),
 ]

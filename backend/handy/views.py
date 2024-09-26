@@ -4,7 +4,7 @@ import numpy as np
 import mediapipe as mp
 
 from django.contrib import messages
-from django.contrib.auth import login, authenticate, get_user_model
+from django.contrib.auth import login, authenticate, get_user_model, logout
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.http import JsonResponse, StreamingHttpResponse
@@ -248,3 +248,7 @@ def get_user_status(request):
         return Response({'logged_in': True, 'username': request.user.username})
     else:
         return Response({'logged_in': False})
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')

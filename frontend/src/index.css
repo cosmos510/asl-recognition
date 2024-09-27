@@ -309,6 +309,11 @@ footer {
     pointer-events: auto;
 }
 
+.form-group {
+    padding-right: 30px;
+}
+
+
 
 @media (max-width: 768px) {
     header h1 {
@@ -358,6 +363,11 @@ footer {
     .container3 {
         flex-direction: column;         
         padding: 0.5rem;
+    }
+    .register-hero-content {
+        flex-direction: column;
+        align-items: center;
+        padding-right: 30px;
     }
 
     #myForm, #loginForm {

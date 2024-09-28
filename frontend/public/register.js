@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alert("Registration Successful, you are now log in!");
+                    alert("Registration Successful, please confirm your mail!");
                     window.location.href = "/";
                 } else {
                     displayErrors(data.errors);

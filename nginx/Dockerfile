@@ -1,5 +1,20 @@
-# Use the official Nginx image from Docker Hub
-FROM nginx:latest
+# Use the Debian Slim image as the base
+FROM debian:stable-slim
 
-# Copy custom configuration file from the current directory
-COPY nginx.conf /etc/nginx/nginx.conf
+# Set environment variable for non-interactive mode
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install Nginx
+RUN apt-get update && \
+    apt-get install -y nginx && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copy your Nginx configuration file
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+
+# Expose the port Nginx will listen on
+EXPOSE 80
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]

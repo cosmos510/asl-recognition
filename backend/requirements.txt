@@ -4,6 +4,6 @@ dj-database-url==0.5.0
 django-cors-headers>=3.8.0
 mediapipe>=0.8.6
 numpy>=1.21.2
-scikit-learn>=0.24.2
+scikit-learn==1.5.1
 v4l2py>=3.0
 djangorestframework>=3.12.4

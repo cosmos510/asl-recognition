@@ -8,11 +8,9 @@ main {
     max-width: 1200px;
     transition: all 0.3s ease;
 }
-
 main:hover {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
-
 body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
@@ -24,7 +22,6 @@ body {
     background-color: #f5f7fa;
     color: #333;
 }
-
 header {
     background: linear-gradient(to bottom right, #1e1e2f, #2a2a3a, #4a4a6a);
     color: white;
@@ -32,7 +29,6 @@ header {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     border-bottom: 2px solid #3e3e5c;
 }
-
 header .header-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -40,19 +36,16 @@ header .header-content {
     justify-content: space-between;
     align-items: center;
 }
-
 header h1 {
     margin: 0;
     font-size: 2rem;
     font-weight: 700;
 }
-
 header nav {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
 }
-
 header nav a {
     color: #f0f8ff;
     text-decoration: none;
@@ -60,24 +53,19 @@ header nav a {
     border-radius: 8px;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
-
 header nav a:hover {
     background-color: #3e3e5c;
     transform: translateY(-2px);
 }
-
 header nav #auth-links {
     display: flex;
     gap: 1.5rem;
 }
-
-
 .features {
     display: flex;
     justify-content: space-around;
     margin-bottom: 2.5rem;
 }
-
 .feature {
     flex: 1;
     margin: 0 1.5rem;
@@ -87,29 +75,25 @@ header nav #auth-links {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
-
 .feature:hover {
     transform: translateY(-10px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
-
 .container {
     padding: 1rem;
     margin: 0 auto;
     max-width: 1200px;
 }
-
 .video-container {
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
     width: 100%;
-    height: 100%; 
+    height: 100%;
     border: 5px solid #2c3e50;
     border-radius: 15px;
     overflow: hidden;
 }
-
 video {
     border: 2px solid #ddd;
     border-radius: 10px;
@@ -124,7 +108,6 @@ video {
     align-items: center;
     height: 500px;
 }
-
 .content {
     display: flex;
     justify-content: space-between;
@@ -132,7 +115,6 @@ video {
     gap: 2rem;
     height: 100%;
 }
-
 .container-predict {
     display: flex;
     flex-direction: column;
@@ -144,7 +126,6 @@ video {
     border-radius: 10px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
-
 .card-prediction {
     color: #fff;
     padding: 0.5rem 1rem;
@@ -152,77 +133,77 @@ video {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     background: linear-gradient(to bottom right, #1e1e2f, #4a4a6a);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-top: 1rem; 
+    margin-top: 1rem;
     text-align: center;
     max-width: 220px;
     max-height: 140px;
     overflow: hidden;
 }
-
 .card-prediction h2 {
     font-size: 1.4rem;
     color: #f0f8ff;
     margin-bottom: 0.5rem;
 }
-
 .card-prediction:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
 }
-
 .prediction-text {
     font-size: 1.2rem;
     color: #ffffff;
     margin: 0.25rem 0;
     animation: pulse 1.5s infinite;
 }
-
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+   }
+    50% {
+        transform: scale(1.05);
+   }
+    100% {
+        transform: scale(1);
+   }
 }
-
+/* Form */
 form {
-    width: 450px;
-    padding: 2.5rem;
+    padding: 1.5rem;
     border-radius: 15px;
-    background-color: #fdfdfd;
+    background-color: #ffffff;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    width: 375px;
 }
-
 form:hover {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
-
 form label {
     display: block;
     margin-bottom: 0.75rem;
     font-weight: 500;
     color: #555;
+   /* Muted dark gray for labels */
 }
-
 form input {
-    width: 100%;
     padding: 0.85rem;
     border: 1px solid #ddd;
     border-radius: 8px;
     margin-bottom: 1.5rem;
     font-size: 1rem;
+    width: 90%;
     background-color: #fafafa;
 }
-
 form input:focus {
-    border-color: #007bff;
+    border-color: #0ABAB5;
+   /* Cyan for input focus */
     background-color: #ffffff;
     outline: none;
 }
-
 form button {
     display: block;
     width: 100%;
     padding: 0.85rem;
-    background-color: #1e1e2f;
+    background-color: #0ABAB5;
+   /* Vibrant cyan for buttons */
     color: white;
     border: none;
     border-radius: 8px;
@@ -230,17 +211,15 @@ form button {
     font-size: 1.1rem;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
-
 form button:hover {
-    background-color: #0056b3;
+    background-color: #008080;
+   /* Darker cyan hover */
     transform: scale(1.05);
 }
-
 .hero {
     text-align: center;
     margin-bottom: 2rem;
 }
-
 footer {
     background: linear-gradient(to bottom right, #1e1e2f, #2a2a3a, #4a4a6a);
     color: white;
@@ -248,7 +227,6 @@ footer {
     text-align: center;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
 }
-
 .btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
@@ -257,19 +235,15 @@ footer {
     border-radius: 8px;
     transition: background-color 0.3s ease;
 }
-
 .btn-primary {
     background-color: #007BFF;
 }
-
 .btn-secondary {
     background-color: #28a745;
 }
-
 .btn:hover {
     background-color: #0056b3;
 }
-
 .feedback_btn {
     padding: 0.75rem 2rem;
     background-color: #3498db;
@@ -284,14 +258,12 @@ footer {
 .feedback_btn:hover {
     background-color: #2980b9;
 }
-
 #three-canvas {
     flex: 1;
     display: block;
     width: 100%;
     height: auto;
 }
-
 .card {
     position: absolute;
     top: 20px;
@@ -303,90 +275,72 @@ footer {
     display: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
 .card.show {
     opacity: 1;
     pointer-events: auto;
 }
 
-.form-group {
-    padding-right: 30px;
-}
-
-
-
 @media (max-width: 768px) {
     header h1 {
         font-size: 1.8rem;
-    }
-
+   }
     header nav {
         flex-wrap: wrap;
         justify-content: center;
-    }
-
+   }
     main {
         margin: 0.5rem 0;
-    }
-
+   }
     .features {
         flex-direction: column;
         align-items: center;
-    }
-
+   }
     .feature {
         margin-bottom: 2rem;
         width: 90%;
-    }
-
+   }
     form {
         width: 100%;
         padding: 0.5rem;
-    }
-
+   }
     .content {
         flex-direction: column;
         align-items: center;
-    }
-
+   }
     .video-container {
         width: 100%;
-    }
-
+   }
     canvas {
         width: 100% !important;
         height: auto !important;
-    }
+   }
     .container-register {
-        flex-direction: column;         
-    }
+        flex-direction: column;
+   }
     .container3 {
-        flex-direction: column;         
+        flex-direction: column;
         padding: 0.5rem;
-    }
+   }
     .register-hero-content {
         flex-direction: column;
         align-items: center;
-        padding-right: 30px;
-    }
-
+        padding-right: 20px;
+        display: flex;
+   }
     #myForm, #loginForm {
-        width: 100%;                  
-    }
+        width: 100%;
+   }
     .register-hero {
         flex-direction: column;
         align-items: center;
-    }
-    canvas {
-        width: 100% !important;
-        height: auto !important;
+        padding-right: 20px;
+        width: 50%;
     }
     main {
         flex-wrap: wrap;
         justify-content: center;
-    }
+   }
 }
-
 
 .container-register {
     display: flex;
@@ -397,23 +351,20 @@ footer {
     margin: 0 auto;
     padding: 3rem;
 }
-
 .register-hero {
     background: linear-gradient(to bottom right, #1e1e2f, #2c2c40, #3f3f5f);
     color: #fff;
     padding: 2rem;
-    flex: 1;                           
+    flex: 1;
     border-radius: 10px;
     box-sizing: border-box;
     min-width: 300px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-
 .register-hero-content h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
 }
-
 .register-hero-content p {
     font-size: 1.2rem;
     margin-bottom: 2rem;

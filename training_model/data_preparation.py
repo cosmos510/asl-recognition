@@ -5,7 +5,6 @@ import cv2
 import random
 import matplotlib.pyplot as plt
 
-# Initialize MediaPipe Hands module
 mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
 
@@ -13,7 +12,7 @@ mp_drawing = mp.solutions.drawing_utils
 hands = mp_hands.Hands(static_image_mode=True, min_detection_confidence=0.1)
 
 # Directory containing the ASL dataset
-DATA_DIR = '/Users/maximemartin/detect/ASL_Alphabet_Dataset/asl_alphabet_train'
+DATA_DIR = 'your_directory_path'
 
 data = []
 labels = []
@@ -32,7 +31,6 @@ HANDLE_MULTIPLE_HANDS = True  # Set to True to handle multiple hands by selectin
 
 # Iterate through each sub-directory in the dataset directory
 for dir_ in os.listdir(DATA_DIR):
-    # Iterate through each image in the sub-directory
     for img_path in os.listdir(os.path.join(DATA_DIR, dir_)):
         total_images += 1
         data_aux = []
@@ -48,24 +46,15 @@ for dir_ in os.listdir(DATA_DIR):
             continue
         
         img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-
-        # Process the image to detect hand landmarks
         results = hands.process(img_rgb)
-
         if results.multi_hand_landmarks:
-            # Check if there are multiple hands detected
             if HANDLE_MULTIPLE_HANDS and len(results.multi_hand_landmarks) > 1:
-                # Option: Choose the first hand detected and ignore the rest
                 hand_landmarks = results.multi_hand_landmarks[0]
             else:
-                # Continue processing if only one hand detected or all hands are needed
                 hand_landmarks = results.multi_hand_landmarks[0]
-
-            # Extract the x and y coordinates of the landmarks
             for i in range(len(hand_landmarks.landmark)):
                 x = hand_landmarks.landmark[i].x
                 y = hand_landmarks.landmark[i].y
-
                 x_.append(x)
                 y_.append(y)
 
@@ -88,7 +77,6 @@ for dir_ in os.listdir(DATA_DIR):
             skipped_images += 1
             if DEBUG_MODE and random.random() < (DISPLAY_SAMPLE_IMAGES / total_images):
                 print(f"No hand landmarks detected in image {img_path} from directory {dir_}. Skipping this image.")
-
                 # Display the image with no landmarks
                 plt.figure(figsize=[10, 10])
                 plt.imshow(img_rgb)
@@ -96,14 +84,10 @@ for dir_ in os.listdir(DATA_DIR):
                 plt.axis('off')
                 plt.show()
 
-# Release MediaPipe resources
 hands.close()
-
-# Save the data to a pickle file
-with open('data_corrected2.pickle', 'wb') as f:
+with open('hand_landmarks.pickle', 'wb') as f:
     pickle.dump({'data': data, 'labels': labels}, f)
 
-# Print summary
 print(f"Data preparation complete. {len(data)} samples saved to 'data_corrected.pickle'.")
 print(f"Total images processed: {total_images}")
 print(f"Images with detected landmarks: {detected_landmarks}")

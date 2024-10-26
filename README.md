@@ -4,6 +4,7 @@ This project is an AI-powered application that recognizes American Sign Language
 
 ![Screenshot 2024-10-26 at 17 49 37](https://github.com/user-attachments/assets/fbcda16b-6cc3-41b2-ad49-538eef77bc9c)
 
+![detect](https://github.com/user-attachments/assets/992883c9-82b8-4d3c-854b-21a4e70409e1)
 
 ## Table of Contents
 - [Features](#features)
@@ -11,7 +12,6 @@ This project is an AI-powered application that recognizes American Sign Language
 - [Installation](#installation)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
-- [Model Training](#model-training)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -59,10 +59,6 @@ After setup, access the application at http://localhost
 - **frontend/**: HTML, CSS, and JavaScript for the UI.
 - **nginx/**: Configuration for serving static files with Nginx.
 - **docker-compose.yml**: Docker configuration.
-
-## Model Training
-
-The ASL recognition model is based on a CNN, trained with ASL datasets. Fine-tuning allows for accurate gesture recognition. Scripts for further customization are included.
 
 ## Contributing
 

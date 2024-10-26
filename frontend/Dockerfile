@@ -9,8 +9,6 @@ COPY package-lock.json ./
 
 # Install dependencies.
 RUN npm install
-RUN npm install three
-RUN npm add @honeybadger-io/js --save
 RUN npm install --save-dev @babel/plugin-proposal-private-property-in-object
 
 

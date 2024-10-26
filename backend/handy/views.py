@@ -239,9 +239,6 @@ def add_feedback(request):
     form = FeedbackForm()
     return render(request, 'add_feedback.html', {'form': form})
 
-def minigame(request):
-    return render(request, 'minigame.html')
-
 @api_view(['GET'])
 def get_user_status(request):
     if request.user.is_authenticated:

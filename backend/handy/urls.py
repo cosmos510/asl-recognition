@@ -12,7 +12,6 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('login/', views.login_view, name='login'),
     path('feedback/', views.add_feedback, name='add_feedback'),
-    path('minigame/', views.minigame, name='minigame'),
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
     path('api/user-status/', views.get_user_status, name='user_status'),
     path('logout/', views.logout_view, name='logout'),

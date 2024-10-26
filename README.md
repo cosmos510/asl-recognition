@@ -29,6 +29,16 @@ This project is an AI-powered application that recognizes American Sign Language
 
 ## Installation
 
+Note: If you want to train your model using your own dataset, place your images in the training_model folder and follow the steps below:
+
+Steps to Use
+
+	1.	Prepare the Dataset: Ensure your ASL dataset is in the specified directory.
+	2.	Run Data Preparation:
+	•	The code processes images to extract hand landmarks and saves the data in a pickle file.
+	3.	Train the Model:
+	•	The model is trained on the processed data, and the trained model is saved.
+
 To set up this project, clone the repository and use Docker Compose:
 
 ```bash

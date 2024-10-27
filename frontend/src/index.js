@@ -1,4 +1,4 @@
-import './index2.css';
+import './index.css';
 
 document.addEventListener("DOMContentLoaded", function() {
     fetch('/header.html')

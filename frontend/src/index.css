@@ -369,3 +369,53 @@ footer {
     font-size: 1.2rem;
     margin-bottom: 2rem;
 }
+
+.social-button {
+    display: inline-block;
+    padding: 5px 10px; /* Reduced padding */
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .github-button {
+    background-color: #24292e;
+  }
+  
+  .github-button:hover {
+    background-color: #333;
+  }
+  
+  .linkedin-button {
+    background-color: #0077b5;
+  }
+  
+  .linkedin-button:hover {
+    background-color: #00608b;
+  }
+
+  .repo-link {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #007bff; /* Blue link color */
+    border: 1px solid #007bff; /* Subtle border */
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .repo-link:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  .cover {
+    width: 60%;
+  }
+
+  #hiddenImage {
+    /* Add your desired styles here, e.g., width, height, border-radius */
+    width: 30%;
+  }

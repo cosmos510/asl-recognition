@@ -281,67 +281,7 @@ footer {
     pointer-events: auto;
 }
 
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 1.8rem;
-   }
-    header nav {
-        flex-wrap: wrap;
-        justify-content: center;
-   }
-    main {
-        margin: 0.5rem 0;
-   }
-    .features {
-        flex-direction: column;
-        align-items: center;
-   }
-    .feature {
-        margin-bottom: 2rem;
-        width: 90%;
-   }
-    form {
-        width: 100%;
-        padding: 0.5rem;
-   }
-    .content {
-        flex-direction: column;
-        align-items: center;
-   }
-    .video-container {
-        width: 100%;
-   }
-    canvas {
-        width: 100% !important;
-        height: auto !important;
-   }
-    .container-register {
-        flex-direction: column;
-   }
-    .container3 {
-        flex-direction: column;
-        padding: 0.5rem;
-   }
-    .register-hero-content {
-        flex-direction: column;
-        align-items: center;
-        padding-right: 20px;
-        display: flex;
-   }
-    #myForm, #loginForm {
-        width: 100%;
-   }
-    .register-hero {
-        flex-direction: column;
-        align-items: center;
-        padding-right: 20px;
-        width: 50%;
-    }
-    main {
-        flex-wrap: wrap;
-        justify-content: center;
-   }
-}
+
 
 .container-register {
     display: flex;
@@ -510,22 +450,76 @@ html {
     overflow: hidden;
 }
 
-@media (max-width: 768px) {
-    .title {
-        font-size: 1.5em;
-        top: 30%;
-        padding: 8px 15px;
-    }
-
-    .subtitle {
-        font-size: 0.9em;
-        top: 70%;
-        padding: 10px 15px;
-        width: 80%;
-    }
-}
-
 @media (max-width: 480px) {
+    #header-container {
+        height: 150px; 
+    }
+
+    .container-register {
+        flex-direction: column;
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature {
+        margin-bottom: 2rem;
+        width: 90%;
+    }
+
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .page-nav {
+        top: 10px;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .page-nav a {
+        padding: 5px 10px;
+        font-size: 0.9rem;
+    }
+
+    .register-hero {
+        flex-direction: column;
+        align-items: center;
+        padding-right: 20px;
+        width: 50%;
+    }
+
+    .register-hero-content {
+        flex-direction: column;
+        align-items: center;
+        padding-right: 20px;
+        display: flex;
+    }
+
+    canvas {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    form {
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    .video-container {
+        width: 100%;
+    }
+
+    main {
+        margin: 0.5rem 0;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
     .title {
         font-size: 1.2em;
         top: 25%;
@@ -537,5 +531,52 @@ html {
         top: 65%;
         padding: 8px 10px;
         width: 90%;
+    }
+
+    header h1 {
+        font-size: 1.8rem; 
+    }
+
+    header nav {
+        flex-wrap: wrap; 
+        justify-content: center; 
+        font-size: 1rem;
+        padding: 10px 0;
+    }
+
+    header nav a {
+        padding: 8px 10px;
+        margin: 5px; 
+    }
+}
+
+@media (max-width: 768px) {
+    #header-container {
+        height: 200px;
+    }
+
+    .page-nav {
+        top: 15px;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .page-nav a {
+        padding: 8px 12px;
+        font-size: 1rem; 
+    }
+
+    .title {
+        font-size: 1.5em;
+        top: 30%;
+        padding: 8px 15px;
+    }
+
+    .subtitle {
+        font-size: 0.9em;
+        top: 70%;
+        padding: 10px 15px;
+        width: 80%;
     }
 }

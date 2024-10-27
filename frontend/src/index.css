@@ -504,3 +504,38 @@ color: #fff;
 html {
     scroll-behavior: smooth;
 }
+
+#hero-section {
+    position: relative;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 1.5em;
+        top: 30%;
+        padding: 8px 15px;
+    }
+
+    .subtitle {
+        font-size: 0.9em;
+        top: 70%;
+        padding: 10px 15px;
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.2em;
+        top: 25%;
+        padding: 5px 10px;
+    }
+
+    .subtitle {
+        font-size: 0.8em;
+        top: 65%;
+        padding: 8px 10px;
+        width: 90%;
+    }
+}

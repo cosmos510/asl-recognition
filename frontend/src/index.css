@@ -22,6 +22,7 @@ body {
     background-color: #f5f7fa;
     color: #333;
 }
+
 header {
     background: linear-gradient(to bottom right, #1e1e2f, #2a2a3a, #4a4a6a);
     color: white;
@@ -220,6 +221,7 @@ form button:hover {
     text-align: center;
     margin-bottom: 2rem;
 }
+
 footer {
     background: linear-gradient(to bottom right, #1e1e2f, #2a2a3a, #4a4a6a);
     color: white;
@@ -413,9 +415,4 @@ footer {
 
   .cover {
     width: 60%;
-  }
-
-  #hiddenImage {
-    /* Add your desired styles here, e.g., width, height, border-radius */
-    width: 30%;
   }

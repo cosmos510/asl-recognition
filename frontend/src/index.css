@@ -185,7 +185,6 @@ form label {
     margin-bottom: 0.75rem;
     font-weight: 500;
     color: #555;
-   /* Muted dark gray for labels */
 }
 form input {
     padding: 0.85rem;
@@ -198,7 +197,6 @@ form input {
 }
 form input:focus {
     border-color: #0ABAB5;
-   /* Cyan for input focus */
     background-color: #ffffff;
     outline: none;
 }
@@ -207,7 +205,6 @@ form button {
     width: 100%;
     padding: 0.85rem;
     background-color: #0ABAB5;
-   /* Vibrant cyan for buttons */
     color: white;
     border: none;
     border-radius: 8px;
@@ -217,7 +214,6 @@ form button {
 }
 form button:hover {
     background-color: #008080;
-   /* Darker cyan hover */
     transform: scale(1.05);
 }
 .hero {
@@ -377,7 +373,7 @@ footer {
 
 .social-button {
     display: inline-block;
-    padding: 5px 10px; /* Reduced padding */
+    padding: 5px 10px;
     border-radius: 5px;
     text-decoration: none;
     color: #fff;
@@ -406,8 +402,8 @@ display: inline-block;
 padding: 5px 10px;
 border-radius: 5px;
 text-decoration: none;
-color: #007bff; /* Blue link color */
-border: 1px solid #007bff; /* Subtle border */
+color: #007bff;
+border: 1px solid #007bff;
 transition: background-color 0.3s ease-in-out;
 }
 
@@ -422,53 +418,52 @@ color: #fff;
     display: block;
 }
 
-/* Title Styling */
 .title {
     position: absolute;
     top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 2em; /* Adjust as needed */
-    color: white; /* Or another contrasting color */
-    font-family: Arial, sans-serif; /* Choose a clean font */
-    background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
-    padding: 10px 20px; /* Spacing around the text */
-    border-radius: 8px; /* Soft edges */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Optional shadow */
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); /* Adds depth */
+    font-size: 2em;
+    color: white;
+    font-family: Arial, sans-serif;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 .subtitle {
     position: absolute;
-    top: 75%; /* Position the paragraph under the title */
+    top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 1em;
     color: white;
     font-family: Arial, sans-serif;
     background: rgba(0, 0, 0, 0.6);
-    padding: 15px 25px; /* Increased padding for more breathing room */
+    padding: 15px 25px;
     border-radius: 8px;
-    width: 60%; /* Control width to keep it narrow */
+    width: 60%;
     max-width: 500px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-    line-height: 1.6; /* Increase line height for readability */
-    margin-top: 20px; /* Increased space between title and paragraph */
-    margin-bottom: 20px; /* Adds extra spacing from the next element */
+    line-height: 1.6;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .alphabet-section {
     text-align: center;
-    max-width: 900px; /* Limits the width of the content */
-    margin: 0 auto; /* Centers the entire section */
+    max-width: 900px;
+    margin: 0 auto;
     padding: 60px;
 }
 
 
 .description {
     font-size: 1.1em;
-    color: #555; /* Slightly lighter color */
-    margin-bottom: 20px; /* Space between paragraph and image */
+    color: #555;
+    margin-bottom: 20px;
     font-family: Arial, sans-serif;
 }
 
@@ -479,4 +474,33 @@ color: #fff;
 
 .about {
     padding: 30px;
+}
+
+.page-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: #f8f8f8;
+    padding: 10px 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.page-nav a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+.page-nav a:hover {
+    color: #007bff;
+}
+
+html {
+    scroll-behavior: smooth;
 }

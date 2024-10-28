@@ -448,7 +448,6 @@ html {
     position: relative;
     overflow: hidden;
 }
-
 @media (max-width: 480px) {
     #header-container {
         height: 150px; 

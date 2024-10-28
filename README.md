@@ -1,6 +1,6 @@
 # ASL Recognition
 
-This project is an AI-powered application that recognizes American Sign Language (ASL) gestures using computer vision. Built with Django and Docker, it provides a straightforward user interface for real-time ASL recognition.
+This project is an AI-powered application that recognizes American Sign Language (ASL) alphabet gestures using computer vision. Built with Django and Docker, it provides a straightforward user interface for real-time ASL alphabet recognition.
 
 ![Screenshot 2024-10-26 at 17 49 37](https://github.com/user-attachments/assets/fbcda16b-6cc3-41b2-ad49-538eef77bc9c)
 
@@ -16,7 +16,7 @@ This project is an AI-powered application that recognizes American Sign Language
 - [License](#license)
 
 ## Features
-- **Real-time ASL Gesture Recognition**: Detects and classifies ASL gestures via webcam.
+- **Real-time ASL Alphabet Recognition**: Detects and classifies ASL alphabet gestures via webcam.
 - **Pre-trained CNN Model with Transfer Learning**: Uses a pre-trained CNN model, fine-tuned for ASL.
 - **Interactive UI**: A clean, accessible UI built with HTML/CSS and JavaScript.
 
@@ -29,15 +29,6 @@ This project is an AI-powered application that recognizes American Sign Language
 
 ## Installation
 
-Note: If you want to train your model using your own dataset, place your images in the training_model folder and follow the steps below:
-
-Steps to Use
-
-	1.	Prepare the Dataset: Ensure your ASL dataset is in the specified directory.
-	2.	Run Data Preparation:
-	•	The code processes images to extract hand landmarks and saves the data in a pickle file.
-	3.	Train the Model:
-	•	The model is trained on the processed data, and the trained model is saved.
 
 To set up this project, clone the repository and use Docker Compose:
 
@@ -48,10 +39,20 @@ docker compose up --build
 ```
 After setup, access the application at http://localhost
 
+## Training Your Own Model
+
+If you want to train your model using your own dataset, place your images of ASL alphabet gestures in the training_model folder and follow the steps below:
+
+	1.	Prepare the Dataset: Ensure your ASL alphabet dataset is in the specified directory.
+	2.	Run Data Preparation:
+		•	The code processes images to extract hand landmarks and saves the data in a pickle file.
+	3.	Train the Model:
+		•	The model is trained on the processed data, and the trained model is saved.
+
 ## Usage
 
 1. **Access the Application**: Navigate to `http://localhost`.
-2. **Recognition**: The model processes gestures, displaying recognized ASL signs.
+2.	Recognition: The model processes gestures, displaying recognized ASL alphabet signs.
 
 ## Project Structure
 

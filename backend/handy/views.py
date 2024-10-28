@@ -144,6 +144,7 @@ def register(request):
                 'maximemartin510@gmail.com',
                 [user.email],
                 fail_silently=False,
+                html_message=message
             )
             messages.success(
                 request, 'Please confirm your email address to complete the registration.')

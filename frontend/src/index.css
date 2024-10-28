@@ -70,6 +70,12 @@ header nav #auth-links {
 .test {
     text-align: center;
 }
+.img_ftr {
+    align-self: center; 
+    margin-top: 20px;
+    max-width: 100%;
+    height: auto;
+  }
 .feature {
     flex: 1;
     margin: 0 1.5rem;
@@ -78,6 +84,9 @@ header nav #auth-links {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: flex;  
+    flex-direction: column; 
+    justify-content: space-between;
 }
 .feature:hover {
     transform: translateY(-10px);
@@ -438,14 +447,6 @@ html {
 #hero-section {
     position: relative;
     overflow: hidden;
-}
-.test {
-    text-align: center;
-}
-
-.img_ftr {
-    width: 100%;
-    bottom: 20%;
 }
 
 @media (max-width: 480px) {

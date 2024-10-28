@@ -9,8 +9,7 @@ COPY package-lock.json ./
 
 # Install dependencies.
 RUN npm install
-RUN npm install --save-dev @babel/plugin-proposal-private-property-in-object
-
+RUN npm update
 
 # Copy the rest of the application code.
 COPY . ./

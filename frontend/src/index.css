@@ -443,6 +443,11 @@ html {
     text-align: center;
 }
 
+.img_ftr {
+    width: 100%;
+    bottom: 20%;
+}
+
 @media (max-width: 480px) {
     #header-container {
         height: 150px; 

@@ -19,7 +19,7 @@
             <form id="feedback-form" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit">Submit Feedback</button>
+                <button type="submit" id="submitButton" class="btn btn-primary">Submit Feedback</button>
             </form>
         </div>
     </main>

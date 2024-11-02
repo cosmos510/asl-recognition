@@ -1,7 +1,7 @@
 main {
     flex: 1;
     padding: 1rem;
-    background-color: #ffffff;
+    background-color: #e6f7ff;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
     margin: 2rem auto;
@@ -19,7 +19,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f5f7fa;
+    background-color: #f0f4f8;
     color: #333;
 }
 
@@ -46,9 +46,10 @@ header nav {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
+    color: white;
 }
 header nav a {
-    color: #f0f8ff;
+    color: white;
     text-decoration: none;
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
@@ -79,7 +80,7 @@ header nav #auth-links {
 .feature {
     flex: 1;
     margin: 0 1.5rem;
-    background: #ffffff;
+    background: #f0f4f8;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -135,7 +136,7 @@ video {
     padding: 2rem 1.5rem;
     max-width: 960px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: #f0f4f8;
     border-radius: 10px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
@@ -172,7 +173,7 @@ video {
 form {
     padding: 1.5rem;
     border-radius: 15px;
-    background-color: #ffffff;
+    background-color: #f0f4f8;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     width: 375px;
 }
@@ -419,7 +420,7 @@ color: #fff;
     display: flex;
     justify-content: center;
     gap: 20px;
-    background-color: #f8f8f8;
+    background-color: #e6f7ff;
     padding: 10px 0;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     position: sticky;

@@ -68,5 +68,22 @@ function captureFrame() {
     }
 }
 
-setupWebcam();
-setInterval(captureFrame, 1000);
+function addLetterToWord() {
+    const predictedLetter = document.getElementById('prediction-text').innerText;
+    if (predictedLetter && predictedLetter !== 'No prediction') {
+        const currentWordElement = document.getElementById('current-word');
+        currentWordElement.innerText += predictedLetter;
+    }
+}
+
+function clearWord() {
+    document.getElementById('current-word').innerText = '';
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('confirm-letter').addEventListener('click', addLetterToWord);
+    document.getElementById('clear-word').addEventListener('click', clearWord);
+    
+    setupWebcam();
+    setInterval(captureFrame, 1000);
+});

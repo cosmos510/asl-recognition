@@ -168,7 +168,9 @@ video {
     margin: 0.25rem 0;
     animation: pulse 1.5s infinite;
 }
-
+#current-word {
+    white-space: pre-wrap;
+}
 /* Form */
 form {
     padding: 1.5rem;

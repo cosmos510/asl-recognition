@@ -70,15 +70,15 @@ function captureFrame() {
 
 function addLetterToWord() {
     const predictedLetter = document.getElementById('prediction-text').innerText;
-    if (predictedLetter && predictedLetter !== 'No hand detected') {
-        const currentWordElement = document.getElementById('current-word');
+    const currentWordElement = document.getElementById('current-word');
+    if (predictedLetter.trim() === 'space') {
+        currentWordElement.innerText += ' '; 
+    } else if (predictedLetter && predictedLetter !== 'No hand detected') {
         currentWordElement.innerText += predictedLetter;
-    }
-    else {
+    } else {
         alert("No valid hand detected. Please ensure your hand is visible to the camera.");
     }
 }
-
 function clearWord() {
     document.getElementById('current-word').innerText = '';
 }

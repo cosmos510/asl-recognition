@@ -70,9 +70,12 @@ function captureFrame() {
 
 function addLetterToWord() {
     const predictedLetter = document.getElementById('prediction-text').innerText;
-    if (predictedLetter && predictedLetter !== 'No prediction') {
+    if (predictedLetter && predictedLetter !== 'No hand detected') {
         const currentWordElement = document.getElementById('current-word');
         currentWordElement.innerText += predictedLetter;
+    }
+    else {
+        alert("No valid hand detected. Please ensure your hand is visible to the camera.");
     }
 }
 

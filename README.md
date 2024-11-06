@@ -52,14 +52,6 @@ After setup, access the application at [http://localhost](http://localhost).
 2. **Start Recognition**: The application will access your webcam to capture gestures.
 3. **Read the Output**: The system displays the detected ASL letters in real-time on the screen.
 
-## 🖥️ Usage
-
-1. **Launch the Application**: Open [http://localhost](http://localhost) in your browser.
-2. **Start Recognition**: The application will access your webcam to capture gestures.
-3. **Read the Output**: The system displays the detected ASL letters in real-time on the screen.
-
----
-
 ## 🧠 Technical Details
 
 ### 1. Model Choice and Design

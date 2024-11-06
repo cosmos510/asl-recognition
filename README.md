@@ -8,7 +8,7 @@ This project is an AI-powered application built to recognize American Sign Langu
 
 - **Deployed Site**: [Link to Deployed Site](https://cosmos510.github.io/landing_page_asl.io/)
 - **GitHub Repository**: [ASL Recognition GitHub Repo](https://github.com/cosmos510/asl-recognition)
-- **Project Blog Article**: [Final Project Blog Article](https://link-to-article)
+- **Project Blog Article**: [Final Project Blog Article](https://www.linkedin.com/feed/update/urn:li:activity:7259995138817409025/)
 - **LinkedIn**: [Maxime Martin LinkedIn](https://www.linkedin.com/in/maxime-martin-090731aa/)
 
 ---

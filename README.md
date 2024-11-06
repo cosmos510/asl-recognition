@@ -1,3 +1,5 @@
+
+
 # ASL Alphabet Recognition
 
 This project is an AI-powered application built to recognize American Sign Language (ASL) alphabet gestures in real-time. Developed with a combination of Django, OpenCV, and Docker, it’s designed to be both accessible and efficient. The app captures hand gestures through a webcam, processes them using a pre-trained CNN model, and displays recognized letters on-screen.
@@ -5,7 +7,10 @@ This project is an AI-powered application built to recognize American Sign Langu
 ## 🎬 Project Demo
 Check out the demo video of the ASL Recognition app in action:
 
-[![ASL Recognition Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://youtu.be/YOUR_VIDEO_ID)
+[ASL Recognition Demo](https://github.com/user-attachments/assets/67c19f27-a10f-4b3b-b239-cd83fd91267a)
+
+
+
 
 ## 🌐 Project Links
 
@@ -27,6 +32,9 @@ My goal was to create an intuitive ASL alphabet recognition tool that could make
 - **Real-Time ASL Alphabet Recognition**: Detects ASL alphabet gestures through webcam input.
 - **Pre-trained CNN with Transfer Learning**: Fine-tuned model for efficient recognition.
 - **Simple UI**: Clean, accessible front-end for seamless user experience.
+
+- ![register](https://github.com/user-attachments/assets/5f942d0d-9b11-4ba5-8605-f38944a9b675)
+
 
 ## 🛠️ Technologies Used
 
@@ -57,16 +65,19 @@ After setup, access the application at [http://localhost](http://localhost).
 
 ## 🧠 Technical Details
 
-### 1. Model Choice and Design
+### 1. **Model Choice and Design**
 
-- **Why CNN?**: Convolutional Neural Networks (CNNs) are highly effective for image recognition tasks, making them ideal for ASL gesture detection. I started with a pre-trained CNN model and fine-tuned it specifically for ASL, balancing accuracy with computational efficiency.
-- **Transfer Learning**: By using transfer learning, I adapted a model to ASL patterns without needing a large dataset, which significantly streamlined the development process.
+- **Why CNN?**: Convolutional Neural Networks (CNNs) are highly effective for image recognition tasks, making them ideal for ASL gesture detection. Given the complexity of ASL gestures, I chose a CNN model for its ability to efficiently extract features from images and accurately classify hand shapes.
+- **Custom Model Development**: Rather than using a pre-trained model, I built the model from scratch. I trained it on a large dataset of ASL alphabet gestures to ensure the model could accurately recognize diverse hand shapes and gestures. This approach allowed me to create a highly specialized model tailored to the unique challenges of ASL recognition.
 
 ### 2. Data Pipeline and Preprocessing
 
 - **Data Capture**: OpenCV captures frames from the webcam, which are then fed into the model for analysis.
 - **Hand Landmark Extraction**: Each frame is processed to isolate hand landmarks, and I implemented a normalization step to ensure x and y coordinates are consistent. This preprocessing step significantly improved the model's accuracy by making gesture inputs more uniform.
 - **Real-Time Processing Optimization**: To achieve low-latency, real-time performance, I optimized data flow from capture to prediction to minimize computational load.
+
+- ![data-flow](https://github.com/user-attachments/assets/4b87e55d-e40c-4184-b8a3-01050d87473a)
+
 
 ### 3. Deployment
 

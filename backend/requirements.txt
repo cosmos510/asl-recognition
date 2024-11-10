@@ -7,3 +7,4 @@ numpy>=1.21.2
 scikit-learn==1.5.1
 v4l2py>=3.0
 djangorestframework>=3.12.4
+protobuf>=4.21.0

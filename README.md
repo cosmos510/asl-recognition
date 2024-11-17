@@ -52,13 +52,13 @@ My goal was to create an intuitive ASL alphabet recognition tool that could make
 
 - **Random Forest Classifier:** A Random Forest classifier is employed to classify the extracted features into corresponding ASL letters. This ensemble learning method is robust to noise and overfitting, making it suitable for image classification tasks.
 - **Feature Extraction:** Key features, such as hand shape, orientation, and position, are extracted from each frame using image processing techniques.
-- **Model Training:** The model is trained on a dataset of LSF alphabet images, where each image is associated with a corresponding letter. The training process involves fitting the Random Forest classifier to the extracted features and their respective labels.
+- **Model Training:** The model is trained on a dataset of ASL alphabet images, where each image is associated with a corresponding letter. The training process involves fitting the Random Forest classifier to the extracted features and their respective labels.
 
 ---
 
-**Note on Model and Training Code:**
+## 🤫 Note on Model and Training Code:
 
-To protect the integrity of this project and its future development, details about the specific model and training code have not been included in this repository. If you're interested in testing the full functionality of the app or exploring potential collaborations, please contact me at [your email address].
+To protect the integrity of this project and its future development, details about the specific model and training code have not been included in this repository. If you're interested in testing the full functionality of the app or exploring potential collaborations, please contact me at maximemartin510@gmail.com.
 
 ---
 

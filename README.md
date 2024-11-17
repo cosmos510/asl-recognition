@@ -29,9 +29,9 @@ My goal was to create an intuitive ASL alphabet recognition tool that could make
 
 ## 🧩 Features
 
-- **Real-Time ASL Alphabet Recognition**: Detects ASL alphabet gestures through webcam input.
-- **Pre-trained CNN with Transfer Learning**: Fine-tuned model for efficient recognition.
-- **Simple UI**: Clean, accessible front-end for seamless user experience.
+* **Real-Time ASL Alphabet Recognition**: Accurately detects ASL alphabet gestures through webcam input.
+* **Robust Random Forest Model**: Employs a Random Forest classifier, trained on a comprehensive dataset, to ensure accurate recognition.
+* **Simple UI**: Clean, accessible front-end for seamless user experience.
 
 - ![register](https://github.com/user-attachments/assets/5f942d0d-9b11-4ba5-8605-f38944a9b675)
 
@@ -41,34 +41,26 @@ My goal was to create an intuitive ASL alphabet recognition tool that could make
 - **Python**: For backend logic.
 - **Django**: Manages API and app logic.
 - **Docker**: Ensures consistent deployment.
-- **TensorFlow**: Powers the deep learning model.
+- **Scikit-learn**: Powers the deep learning model.
 - **OpenCV**: Handles video capture and image processing.
 
 ---
 
-## 📦 Installation
-
-Clone this repository and use Docker Compose to get started.
-
-```bash
-git clone https://github.com/cosmos510/asl-recognition.git
-cd asl-recognition
-docker compose up --build
-```
-After setup, access the application at [http://localhost](http://localhost).
-
-## 🖥️ Usage
-
-1. **Launch the Application**: Open [http://localhost](http://localhost) in your browser.
-2. **Start Recognition**: The application will access your webcam to capture gestures.
-3. **Read the Output**: The system displays the detected ASL letters in real-time on the screen.
-
 ## 🧠 Technical Details
 
-### 1. **Model Choice and Design**
+1. **Model Choice and Design:**
 
-- **Why CNN?**: Convolutional Neural Networks (CNNs) are highly effective for image recognition tasks, making them ideal for ASL gesture detection. Given the complexity of ASL gestures, I chose a CNN model for its ability to efficiently extract features from images and accurately classify hand shapes.
-- **Custom Model Development**: Rather than using a pre-trained model, I built the model from scratch. I trained it on a large dataset of ASL alphabet gestures to ensure the model could accurately recognize diverse hand shapes and gestures. This approach allowed me to create a highly specialized model tailored to the unique challenges of ASL recognition.
+- **Random Forest Classifier:** A Random Forest classifier is employed to classify the extracted features into corresponding ASL letters. This ensemble learning method is robust to noise and overfitting, making it suitable for image classification tasks.
+- **Feature Extraction:** Key features, such as hand shape, orientation, and position, are extracted from each frame using image processing techniques.
+- **Model Training:** The model is trained on a dataset of LSF alphabet images, where each image is associated with a corresponding letter. The training process involves fitting the Random Forest classifier to the extracted features and their respective labels.
+
+---
+
+**Note on Model and Training Code:**
+
+To protect the integrity of this project and its future development, details about the specific model and training code have not been included in this repository. If you're interested in testing the full functionality of the app or exploring potential collaborations, please contact me at [your email address].
+
+---
 
 ### 2. Data Pipeline and Preprocessing
 
@@ -105,11 +97,6 @@ Contributions are welcome! If you’d like to improve the model, UI, or any othe
 
 ---
 
-## 📜 License
-
-This project is licensed under the MIT License, encouraging open collaboration and sharing.
-
----
 
 ## 📓 Project Reflection
 
@@ -124,3 +111,7 @@ My next steps include refining the UI, optimizing the model further, and potenti
 ---
 
 Let’s connect if you’re interested in accessible tech or just want to chat about machine learning!
+
+## 📜 License
+
+This project is licensed under the MIT License, encouraging open collaboration and sharing.

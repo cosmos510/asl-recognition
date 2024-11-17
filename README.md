@@ -2,7 +2,7 @@
 
 # ASL Alphabet Recognition
 
-This project is an AI-powered application built to recognize American Sign Language (ASL) alphabet gestures in real-time. Developed with a combination of Django, OpenCV, and Docker, it’s designed to be both accessible and efficient. The app captures hand gestures through a webcam, processes them using a pre-trained CNN model, and displays recognized letters on-screen.
+This project is an AI-powered application built to recognize American Sign Language (ASL) alphabet gestures in real-time. Using a combination of Python, OpenCV, and a custom-trained machine learning model, the app captures hand gestures via webcam, processes them, and displays recognized letters on the screen.
 
 ## 🎬 Project Demo
 Check out the demo video of the ASL Recognition app in action:

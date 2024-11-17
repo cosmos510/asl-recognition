@@ -54,15 +54,8 @@ My goal was to create an intuitive ASL alphabet recognition tool that could make
 - **Feature Extraction:** Key features, such as hand shape, orientation, and position, are extracted from each frame using image processing techniques.
 - **Model Training:** The model is trained on a dataset of ASL alphabet images, where each image is associated with a corresponding letter. The training process involves fitting the Random Forest classifier to the extracted features and their respective labels.
 
----
 
-## 🤫 Note on Model and Training Code:
-
-To protect the integrity of this project and its future development, details about the specific model and training code have not been included in this repository. If you're interested in testing the full functionality of the app or exploring potential collaborations, please contact me at maximemartin510@gmail.com.
-
----
-
-### 2. Data Pipeline and Preprocessing
+2. **Data Pipeline and Preprocessing**
 
 - **Data Capture**: OpenCV captures frames from the webcam, which are then fed into the model for analysis.
 - **Hand Landmark Extraction**: Each frame is processed to isolate hand landmarks, and I implemented a normalization step to ensure x and y coordinates are consistent. This preprocessing step significantly improved the model's accuracy by making gesture inputs more uniform.
@@ -71,10 +64,17 @@ To protect the integrity of this project and its future development, details abo
 - ![data-flow](https://github.com/user-attachments/assets/4b87e55d-e40c-4184-b8a3-01050d87473a)
 
 
-### 3. Deployment
+3. **Deployment**
 
 - **Docker for Portability**: Docker packages dependencies and configurations, ensuring the app runs smoothly on any machine.
 - **Web Interface**: A lightweight frontend built with HTML/CSS/JavaScript keeps the app accessible and easy to navigate.
+
+---
+
+
+## 🤫 Note on Model and Training Code:
+
+To protect the integrity of this project and its future development, details about the specific model and training code have not been included in this repository. If you're interested in testing the full functionality of the app or exploring potential collaborations, please contact me at maximemartin510@gmail.com.
 
 ---
 
